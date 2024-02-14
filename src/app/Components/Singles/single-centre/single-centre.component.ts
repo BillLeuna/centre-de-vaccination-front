@@ -28,6 +28,8 @@ export class SingleCentreComponent implements OnInit{
       if (idParam !== null) {
         this.centreId = +idParam;
         this.loadCentreDetails();
+        console.log(this.centre.getAdresseToString());
+        
       }
     });
     this.utilisateur = this.utilisateurService.getUtilisateur();
