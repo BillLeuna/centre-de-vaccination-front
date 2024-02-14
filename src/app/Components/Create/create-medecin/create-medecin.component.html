@@ -1,6 +1,6 @@
 <div class="create-container">
-    <h2>Créer un nouveau patient</h2>
-    <form (ngSubmit)="savePatient()">
+    <H2>Créer un nouveau médécin</H2>
+    <form>
         <div class="form-group">
             <label for="prenom">Prénom :</label>
             <input type="prenom" id="prenom" [(ngModel)]="prenom" name="prenom" placeholder="Saisissez votre prénom" required>
@@ -18,19 +18,11 @@
             <input type="tel" id="tel" [(ngModel)]="tel" name="tel" placeholder="Saisissez votre numéro de téléphone" required>
         </div>
         <div class="form-group">
-            <label for="dateInscription">Date d'inscription :</label>
-            <input type="text" id="dateInscription" name="dateInscription" pattern="\d{2}/\d{2}/\d{4}" required>
-            <small>Format: jj/mm/aaaa</small>
+            <label for="centre">Centre hospitalier :</label>
+            <select id="centre" [(ngModel)]="centre" name="centre" required>
+                <option *ngFor="let centre of centres" [value]="centre" placeholder="Choisissez votre centre">{{ centre }}</option>
+            </select>
         </div>
-        <div class="form-group">
-            <label for="dateNaissance">Date de naissance :</label>
-            <input type="text" id="dateNaissance" name="dateNaissance" pattern="\d{2}/\d{2}/\d{4}" required>
-            <small>Format: jj/mm/aaaa</small>
-        </div>
-        <div class="form-group">
-            <label for="ville">Ville :</label>
-            <input type="text" id="ville" [(ngModel)]="patient.adresse.ville" name="ville" required>
-        </div>
-        <button type="submit">Enregistrer</button>
     </form>
+
 </div>

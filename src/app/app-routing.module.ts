@@ -11,6 +11,7 @@ import { SinglePatientComponent } from './Components/Singles/single-patient/sing
 import { CreatePatientComponent } from './Components/Create/create-patient/create-patient.component';
 import { SingleMedecinComponent } from './Components/Singles/single-medecin/single-medecin.component';
 import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
+import { CreateMedecinComponent } from './Components/Create/create-medecin/create-medecin.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -24,7 +25,8 @@ const routes: Routes = [
   { path: 'patients/:id', component: SinglePatientComponent },
   { path: 'medecins/:id', component: SingleMedecinComponent },
   { path: 'centres/:id', component: SingleCentreComponent },
-  { path: 'create-patient', component: CreatePatientComponent }
+  { path: 'create-patient', component: CreatePatientComponent },
+  { path: 'create-medecin', component: CreateMedecinComponent }
 
 ];
 

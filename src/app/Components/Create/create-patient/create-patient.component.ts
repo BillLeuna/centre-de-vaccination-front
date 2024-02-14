@@ -10,6 +10,13 @@ import { MedecinService } from 'src/app/Services/MedecinService/medecin.service'
 })
 export class CreatePatientComponent implements OnInit{
 
+  email: string = "";
+  prenom: String = "";
+  nom: String = "";
+  tel: String = "";
+  centre: String = "";
+  creer_un_compte: string = 'Créer un compte';
+
   patient: Patient = new Patient();
   medecins: Medecin[] = [];
 

@@ -47,7 +47,14 @@ export class AuthentificationComponent implements OnInit {
       this.updateUtilisateur();
       this.router.navigate(['centres']);
     } else {
-      this.router.navigate(['create-patient']);
+      if (this.selectedStatut == 'patient'){
+        this.router.navigate(['create-patient']);
+      }else if (this.selectedStatut == 'medecin'){
+        this.router.navigate(['create-medecin']);
+      }
+
+
+      
     }
   }
 
