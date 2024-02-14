@@ -1,4 +1,5 @@
 import { Adresse } from "./Adresse";
+import { Centre } from "./Centre";
 import { Medecin } from "./Medecin";
 
 export class Patient {
@@ -11,6 +12,7 @@ export class Patient {
     dateDInscription!: Date;
     telephone!: number;
     adresse!: Adresse;
-    docteur!: Medecin;
+    medecins!: Medecin[];
+    centres!: Centre[];
 
 }

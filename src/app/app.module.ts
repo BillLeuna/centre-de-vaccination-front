@@ -22,6 +22,7 @@ import { SingleMedecinComponent } from './Components/Singles/single-medecin/sing
 import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateMedecinComponent } from './Components/Create/create-medecin/create-medecin.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { CreateMedecinComponent } from './Components/Create/create-medecin/creat
     FormsModule, 
     CommonModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    MatDialogModule
+    
   ],
   providers: [PatientService],
   bootstrap: [AppComponent]
