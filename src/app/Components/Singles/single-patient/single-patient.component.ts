@@ -11,7 +11,7 @@ import { PatientService } from 'src/app/Services/PatientService/patient.service'
 export class SinglePatientComponent implements OnInit{
 
   patientId!: number;
-  patient!: Patient;
+  patient: Patient = new Patient();
 
   constructor(private route: ActivatedRoute,
               private patientService: PatientService,

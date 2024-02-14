@@ -8,5 +8,9 @@ export class Medecin {
     email!: string;
     telephone!: number;
     centre!: Centre;
+
+    getNomCentre(): String {
+        return this.centre.nom;
+    }
     
 }

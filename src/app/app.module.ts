@@ -19,6 +19,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { SinglePatientComponent } from './Components/Singles/single-patient/single-patient.component';
 import { MedecinCreateComponent } from './Components/Create/medecin-create/medecin-create.component';
 import { CreatePatientComponent } from './Components/Create/create-patient/create-patient.component';
+import { SingleMedecinComponent } from './Components/Singles/single-medecin/single-medecin.component';
+import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -35,13 +38,16 @@ import { CreatePatientComponent } from './Components/Create/create-patient/creat
     SinglePatientComponent,
     MedecinCreateComponent,
     CreatePatientComponent,
+    SingleMedecinComponent,
+    SingleCentreComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule, 
     FormsModule, 
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [PatientService],
   bootstrap: [AppComponent]

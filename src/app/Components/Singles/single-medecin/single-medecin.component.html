@@ -1,0 +1,28 @@
+<app-menu></app-menu>
+<div class="single-medecin-container">
+    <h2>Détails du Medecin</h2>
+    <div class="medecin-card">
+        <div class="medecin-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ medecin.nom }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Prénom:</div>
+            <div class="info-value">{{ medecin.prenom }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ medecin.email }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Téléphone:</div>
+            <div class="info-value">{{ medecin.telephone }}</div>
+        </div>
+    </div>
+  
+    <div class="medecin-operations">
+      <button (click)="supprimerMedecin()">Supprimer le Medecin</button>
+      <button (click)="goBack()">Retour</button>
+    </div>
+  </div>
+  

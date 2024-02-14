@@ -11,3 +11,6 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); // Ombre du texte
     margin: 0; // Supprimer la marge par défaut
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

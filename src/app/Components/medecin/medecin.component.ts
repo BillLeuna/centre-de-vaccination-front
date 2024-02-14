@@ -54,4 +54,6 @@ export class MedecinComponent implements OnInit{
   goToSingleMedecin(medecinId: number): void {
     this.router.navigate(['medecins', medecinId]);
   }
+
+  
 }

@@ -1,0 +1,21 @@
+<app-menu></app-menu>
+<div class="single-centre-container">
+    <h2>Détails du Centre</h2>
+    <div class="centre-card">
+        <div class="centre-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ centre.nom }}</div>
+        </div>
+        <div class="centre-info">
+            <div class="info-label">Adresse:</div>
+            <div class="info-value">{{ centre.getAdresseToString }}</div>
+        </div>
+    </div>
+  
+    <div class="centre-operations">
+        <button *ngIf="isPatient()" (click)="inscriptionAuCentre()">S'inscrire à ce Centre</button>
+        <button (click)="supprimerCentre()">Supprimer le Centre</button>
+      <button (click)="goBack()">Retour</button>
+    </div>
+  </div>
+  

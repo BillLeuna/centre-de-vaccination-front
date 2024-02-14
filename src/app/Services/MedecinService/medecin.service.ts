@@ -8,7 +8,7 @@ import { Medecin } from 'src/app/Models/Medecin';
 })
 export class MedecinService {
 
-  private apiUrl = 'http://localhost:8083/docteurs';
+  private apiUrl = 'http://localhost:8083/medecins';
 
   constructor(private http: HttpClient) { }
 

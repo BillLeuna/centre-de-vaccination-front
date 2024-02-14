@@ -79,7 +79,7 @@ export class AuthentificationComponent implements OnInit {
         });
     }
 
-    if (this.selectedStatut === 'admin' || this.selectedAdminType === 'adminCentre') {
+    if (this.selectedStatut === 'admin' && this.selectedAdminType === 'adminCentre') {
       this.administrateurService.getAdministrateurCentreByEmail(this.email)
         .subscribe(adminCentre => {
           this.utilisateurService.getUtilisateur().setNom(adminCentre.nom);
@@ -87,7 +87,7 @@ export class AuthentificationComponent implements OnInit {
         });
     }
     
-    if (this.selectedStatut === 'admin' || this.selectedAdminType === 'superAdmin') {
+    if (this.selectedStatut === 'admin' && this.selectedAdminType === 'superAdmin') {
       this.administrateurService.getSuperAdminByEmail(this.email)
         .subscribe(superAdmin => {
           this.utilisateurService.getUtilisateur().setNom(superAdmin.nom);

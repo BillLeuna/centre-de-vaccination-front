@@ -9,6 +9,8 @@ import { TableauDeBordComponent } from './Components/tableau-de-bord/tableau-de-
 import { MonCompteComponent } from './Components/mon-compte/mon-compte.component';
 import { SinglePatientComponent } from './Components/Singles/single-patient/single-patient.component';
 import { CreatePatientComponent } from './Components/Create/create-patient/create-patient.component';
+import { SingleMedecinComponent } from './Components/Singles/single-medecin/single-medecin.component';
+import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'tableau-de-bord', component: TableauDeBordComponent },
   { path: 'mon-compte', component: MonCompteComponent },
   { path: 'patients/:id', component: SinglePatientComponent },
+  { path: 'medecins/:id', component: SingleMedecinComponent },
+  { path: 'centres/:id', component: SingleCentreComponent },
   { path: 'create-patient', component: CreatePatientComponent }
 
 ];
