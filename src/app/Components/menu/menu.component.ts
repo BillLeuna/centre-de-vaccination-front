@@ -14,5 +14,6 @@ export class MenuComponent {
     { label: 'Administrateurs de centre', route: '/admin' },
     { label: 'Tableau de bord', route: '/tableau-de-bord' },
     { label: 'Mon Compte', route: '/mon-compte' },
+    { label: 'Administrateurs', route: '/administrateurs' }
   ];
 }

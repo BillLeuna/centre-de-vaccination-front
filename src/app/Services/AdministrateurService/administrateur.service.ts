@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable } from 'rxjs';
 import { AdministrateurCentre } from 'src/app/Models/AdministrateurCentre';
 import { SuperAdmin } from 'src/app/Models/SuperAdmin';
 
@@ -39,4 +39,32 @@ export class AdministrateurService {
     return this.http.get<SuperAdmin>(this.apiUrl + this.superAdminUrl + '/getByEmail/' + email);
   }
   
+  addAdminCentre(admin: AdministrateurCentre): Observable<AdministrateurCentre> {
+    return this.http.post<AdministrateurCentre>(this.administarteurUrl + '/create', admin);
+  }
+
+  addSuperAdmin(superAdmin: SuperAdmin): Observable<SuperAdmin> {
+    return this.http.post<SuperAdmin>(this.superAdminUrl + '/create', superAdmin);
+  }
+
+  deleteAdminCentre(adminId: number): Observable<void> {
+    const url = `${this.administarteurUrl}/${adminId}`;
+    return this.http.delete<void>(url)
+      .pipe(
+        catchError((error) => {
+          console.error('Une erreur s\'est produite lors de la suppression de l\'administrateur de centre:', error);
+          throw error;
+        })
+      );
+  }
+  deleteSuperAdmin(adminId: number): Observable<void> {
+    const url = `${this.administarteurUrl}/${adminId}`;
+    return this.http.delete<void>(url)
+      .pipe(
+        catchError((error) => {
+          console.error('Une erreur s\'est produite lors de la suppression de l\'administrateur de centre:', error);
+          throw error;
+        })
+      );
+  }
 }

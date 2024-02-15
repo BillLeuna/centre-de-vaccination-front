@@ -1,17 +1,40 @@
-<!-- <app-menu></app-menu>
-<div class="patient-container">
-    <h2>Créer un Nouveau Patient</h2>
+<div class="create-container">
+    <h2>Patient - Créer un compte</h2>
     <form (ngSubmit)="savePatient()">
         <div class="form-group">
-            <label for="medecin">Médecin :</label>
-            <select id="medecin" [(ngModel)]="patient.medecins" name="docteur" required>
-                <option *ngFor="let medecin of medecins" [ngValue]="medecin">{{ medecin.nom }} {{ medecin.prenom }}</option>
-            </select>
+            <label for="prenom">Prénom :</label>
+            <input type="prenom" id="prenom" [(ngModel)]="patient.prenom" name="prenom" placeholder="Saisissez votre prénom" required>
         </div>
         <div class="form-group">
-            <label for="ville">Ville :</label>
-            <input type="text" id="ville" [(ngModel)]="patient.adresse.ville" name="ville" required>
+            <label for="nom">Nom :</label>
+            <input type="nom" id="nom" [(ngModel)]="patient.nom" name="nom" placeholder="Saisissez votre nom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" [(ngModel)]="patient.email" name="email" placeholder="Saisissez votre email" required>
+        </div>
+        <div class="form-group">
+            <label for="tel">Téléphone :</label>
+            <input type="tel" id="tel" [(ngModel)]="patient.telephone" name="tel" placeholder="Saisissez votre numéro de téléphone" required>
+        </div>
+        <div class="form-group">
+            <label for="dateInscription">Date d'inscription :</label>
+            <input type="text" id="dateInscription" name="dateInscription" [(ngModel)]="patient.dateDInscription" required>
+            <small>Format: jj/mm/aaaa</small>
+        </div>
+        <div class="form-group">
+            <label for="dateNaissance">Date de naissance :</label>
+            <input type="text" id="dateNaissance" name="dateNaissance" [(ngModel)]="patient.dateDeNaissance" required>
+            <small>Format: jj/mm/aaaa</small>
+        </div>
+        <div class="form-group">
+            <label for="ville">Adresse :</label>
+            <div class="adresse-group">
+                <input type="text" id="num" [(ngModel)]="adresse.zip_code" name="num" placeholder="Saisissez votre numéro de rue" required >
+                <input type="text" id="rue" [(ngModel)]="adresse.rue" name="rue" placeholder="Saisissez votre nom de rue" required>
+            </div>
+            <input type="text" id="ville" [(ngModel)]="adresse.ville" name="ville" placeholder="Ville" required>
         </div>
         <button type="submit">Enregistrer</button>
     </form>
-</div> -->
+</div>

@@ -1,0 +1,59 @@
+<app-menu></app-menu>
+<div>
+    <div class="search-filter-container">
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Rechercher par nom ou prénom" />
+        <button (click)="filterAdmin()">Filtrer</button>
+        <button (click)="DisplayAllAdmin()">Tout afficher</button>
+    </div>
+    <div class="admins">
+        <div *ngIf="allAdminCentre">
+            <h2>Adminitrateurs de centre</h2>
+            <div class="admin-container">
+                <div *ngFor="let adminCentre of filtredAdminCentre" class="admin-card">
+                    <div class="admin-info">
+                        <div class="info-label">Nom :</div>
+                        <div class="info-value">{{ adminCentre.nom }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Prénom :</div>
+                        <div class="info-value">{{ adminCentre.prenom }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Email :</div>
+                        <div class="info-value">{{ adminCentre.email }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Centre :</div>
+                        <div class="info-value">{{ adminCentre.centre.nom }}</div>
+                        <button mat-raised-button color="warn" (click)="deleteAdmininistrateurCentre(adminCentre.id)">Supprimer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="allSuperAdmin">
+            <h2>Super Adminitrateurs</h2>
+            <div class="admin-container">
+                <div *ngFor="let superAdmin of filtredAdminCentre" class="admin-card">
+                    <div class="admin-info">
+                        <div class="info-label">Nom :</div>
+                        <div class="info-value">{{ superAdmin.nom }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Prénom :</div>
+                        <div class="info-value">{{ superAdmin.prenom }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Email :</div>
+                        <div class="info-value">{{ superAdmin.email }}</div>
+                    </div>
+                    <div class="admin-info">
+                        <div class="info-label">Centre :</div>
+                        <div class="info-value">{{ superAdmin.centre.nom }}</div>
+                    </div>
+                    <button mat-raised-button color="warn" (click)="deleteAdmininistrateurCentre(superAdmin.id)">Supprimer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

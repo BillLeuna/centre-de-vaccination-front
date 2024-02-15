@@ -17,11 +17,19 @@ import { MonCompteComponent } from './Components/mon-compte/mon-compte.component
 import { PatientService } from './Services/PatientService/patient.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SinglePatientComponent } from './Components/Singles/single-patient/single-patient.component';
-import { MedecinCreateComponent } from './Components/Create/medecin-create/medecin-create.component';
 import { CreatePatientComponent } from './Components/Create/create-patient/create-patient.component';
 import { SingleMedecinComponent } from './Components/Singles/single-medecin/single-medecin.component';
 import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateMedecinComponent } from './Components/Create/create-medecin/create-medecin.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatIconModule } from '@angular/material/icon';
+import { CreateAdminCentreComponent } from './Components/Create/create-admin-centre/create-admin-centre.component';
+import { CreateSuperAdminComponent } from './Components/Create/create-super-admin/create-super-admin.component';
+import { AdministrateursComponent } from './Components/administrateurs/administrateurs.component';
 
 @NgModule({
   declarations: [
@@ -36,18 +44,27 @@ import { MatDialogModule } from '@angular/material/dialog';
     TableauDeBordComponent,
     MonCompteComponent,
     SinglePatientComponent,
-    MedecinCreateComponent,
     CreatePatientComponent,
     SingleMedecinComponent,
     SingleCentreComponent,
+    CreateMedecinComponent,
+    CreateAdminCentreComponent,
+    CreateSuperAdminComponent,
+    AdministrateursComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule, 
     FormsModule, 
     CommonModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatIconModule
     
   ],
   providers: [PatientService],

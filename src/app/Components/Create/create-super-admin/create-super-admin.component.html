@@ -1,0 +1,19 @@
+<app-menu></app-menu>
+<div class="create-container">
+    <h2>SuperAdmin - Créer un compte</h2>
+    <form (ngSubmit)="saveSuperAdmin()">
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="prenom" id="prenom" [(ngModel)]="superAdmin.prenom" name="prenom" placeholder="Saisissez son prénom" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="nom" id="nom" [(ngModel)]="superAdmin.nom" name="nom" placeholder="Saisissez son nom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" [(ngModel)]="superAdmin.email" name="email" placeholder="Saisissez son email" required>
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>
