@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
-import { Utilisateur } from 'src/app/Models/Utilisateur';
 import { AdministrateurService } from 'src/app/Services/AdministrateurService/administrateur.service';
 import { AuthentificationService } from 'src/app/Services/AuthentificationService/authentification.service';
 import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
@@ -52,9 +51,6 @@ export class AuthentificationComponent implements OnInit {
       }else if (this.selectedStatut == 'medecin'){
         this.router.navigate(['create-medecin']);
       }
-
-
-      
     }
   }
 

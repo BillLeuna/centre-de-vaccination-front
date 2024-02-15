@@ -23,4 +23,8 @@ export class PatientService {
   getPatientByEmail(email: string): Observable<Patient> {
     return this.http.get<Patient>(this.apiUrl + '/getByEmail/' + email);
   }
+
+  addPatient(patient: Patient): Observable<Patient> {
+    return this.http.post<Patient>(this.apiUrl + '/create', patient);
+  }
 }

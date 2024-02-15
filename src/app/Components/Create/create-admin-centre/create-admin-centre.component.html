@@ -1,0 +1,25 @@
+<app-menu></app-menu>
+<div class="create-container">
+    <h2>AdminCentre - Créer un compte</h2>
+    <form (ngSubmit)="saveAdminCentre()">
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="prenom" id="prenom" [(ngModel)]="admin.prenom" name="prenom" placeholder="Saisissez son prénom" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="nom" id="nom" [(ngModel)]="admin.nom" name="nom" placeholder="Saisissez son nom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" [(ngModel)]="admin.email" name="email" placeholder="Saisissez son email" required>
+        </div>
+        <div class="form-group">
+            <label for="centre">Centre hospitalier :</label>
+            <select id="centre" [(ngModel)]="admin.centre" name="centre" required>
+                <option *ngFor="let centre of centres" [value]="centre" placeholder="Choisissez son centre">{{ centre }}</option>
+            </select>
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+</div>

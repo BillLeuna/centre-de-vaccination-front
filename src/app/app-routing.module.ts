@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthentificationComponent } from './Components/authentification/authentification.component';
 import { CentreComponent } from './Components/centre/centre.component';
@@ -12,6 +12,7 @@ import { CreatePatientComponent } from './Components/Create/create-patient/creat
 import { SingleMedecinComponent } from './Components/Singles/single-medecin/single-medecin.component';
 import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
 import { CreateMedecinComponent } from './Components/Create/create-medecin/create-medecin.component';
+import { AdministrateursComponent } from './Components/administrateurs/administrateurs.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -26,7 +27,8 @@ const routes: Routes = [
   { path: 'medecins/:id', component: SingleMedecinComponent },
   { path: 'centres/:id', component: SingleCentreComponent },
   { path: 'create-patient', component: CreatePatientComponent },
-  { path: 'create-medecin', component: CreateMedecinComponent }
+  { path: 'create-medecin', component: CreateMedecinComponent },
+  { path: 'administrateurs', component: AdministrateursComponent }
 
 ];
 

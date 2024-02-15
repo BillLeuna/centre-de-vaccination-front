@@ -23,4 +23,8 @@ export class MedecinService {
   getMedecinByEmail(email: string): Observable<Medecin> {
     return this.http.get<Medecin>(this.apiUrl + '/getByEmail/' + email);
   }
+
+  addMedecin(medecin: Medecin): Observable<Medecin> {
+    return this.http.post<Medecin>(this.apiUrl + '/create', medecin);
+  }
 }

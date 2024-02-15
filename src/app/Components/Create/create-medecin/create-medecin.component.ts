@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Centre } from 'src/app/Models/Centre';
+import { Medecin } from 'src/app/Models/Medecin';
+import { CentreService } from 'src/app/Services/CentreService/centre.service';
 import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
 
 @Component({
@@ -9,20 +12,42 @@ import { MedecinService } from 'src/app/Services/MedecinService/medecin.service'
 })
 export class CreateMedecinComponent implements OnInit {
 
-  email: string = "";
-  prenom: String = "";
-  nom: String = "";
-  tel: String = "";
-  centre: String = "";
-  creer_un_compte: string = 'Créer un compte';
-  centres: string[] = ['centre1', 'centre12', 'centre21', 'centre321', 'centre651', 'centre1765'];
+  medecin: Medecin = new Medecin();
+  centres: Centre[] = [];
 
   constructor(private router: Router,
-              private medecinService: MedecinService){              
+              private medecinService: MedecinService,
+              private centreService: CentreService){              
   }
 
   ngOnInit(): void {
+    this.getCentres();
+  }
 
+  getCentres(): void {
+    this.centreService.getCentres()
+      .subscribe(centres => {
+        this.centres = centres;
+      });
+  }
+
+    // Fonction pour réinitialiser les champs du formulaire après l'ajout du patient
+  resetForm() {
+    this.medecin = new Medecin();
+  }
+
+
+  saveMedecin(): void {
+    this.medecinService.addMedecin(this.medecin).subscribe(
+      (medecin: Medecin) => {
+        console.log('Medecin ajouté avec succès :', medecin);
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Erreur lors de l\'ajout du medecin :', error);
+      }
+    );
+    this.router.navigate(['Tableau-de-bord']);
   }
 
 }

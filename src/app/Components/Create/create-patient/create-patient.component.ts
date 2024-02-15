@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Medecin } from 'src/app/Models/Medecin';
+import { Router } from '@angular/router';
 import { Patient } from 'src/app/Models/Patient';
-import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service'
+import { Adresse } from 'src/app/Models/Adresse';
 
 @Component({
   selector: 'app-create-patient',
@@ -10,28 +11,37 @@ import { MedecinService } from 'src/app/Services/MedecinService/medecin.service'
 })
 export class CreatePatientComponent implements OnInit{
 
-  email: string = "";
-  prenom: String = "";
-  nom: String = "";
-  tel: String = "";
-  centre: String = "";
-  creer_un_compte: string = 'Créer un compte';
-
   patient: Patient = new Patient();
-  medecins: Medecin[] = [];
+  adresse: Adresse = new Adresse();
 
-  constructor(
-    private medecinService: MedecinService
-  ) { }
+  constructor(private patientService: PatientService,
+              private router: Router,) {
 
-  ngOnInit(): void {
-    this.medecinService.getMedecins().subscribe((medecins) => {
-      this.medecins = medecins;
-    });
   }
 
+  ngOnInit(): void {
+  }
+
+    // Fonction pour réinitialiser les champs du formulaire après l'ajout du patient
+  resetForm() {
+    this.patient = new Patient();
+  }
+
+
   savePatient(): void {
-    // Assurez-vous que votre backend est configuré pour gérer la création simultanée du patient et de son adresse.
-    // Vous pouvez également appeler le service PatientService pour sauvegarder le patient.
+    this.patient.adresse = this.adresse;
+    // Appeler la méthode addPatient du service PatientService pour ajouter le patient
+    this.patientService.addPatient(this.patient).subscribe(
+      (patient: Patient) => {
+        console.log('Patient ajouté avec succès :', patient);
+        // Réinitialiser les champs du formulaire après l'ajout du patient
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Erreur lors de l\'ajout du patient :', error);
+        // Gérer l'erreur, par exemple afficher un message à l'utilisateur
+      }
+    );
+    this.router.navigate(['centres']);
   }
 }
