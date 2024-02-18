@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'centres/:id', component: SingleCentreComponent },
   { path: 'create-patient', component: CreatePatientComponent },
   { path: 'create-medecin', component: CreateMedecinComponent },
-  { path: 'administrateurs', component: AdministrateursComponent }
+  { path: 'administrateurs', component: AdministrateursComponent },
+  { path: 'tableau-de-bord', component: TableauDeBordComponent}
 
 ];
 

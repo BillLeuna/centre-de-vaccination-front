@@ -10,7 +10,7 @@ export class Patient {
     email!: string;
     dateDeNaissance!: Date;
     dateDInscription!: Date;
-    telephone!: number;
+    telephone!: string;
     adresse!: Adresse;
     medecins!: Medecin[];
     centres!: Centre[];

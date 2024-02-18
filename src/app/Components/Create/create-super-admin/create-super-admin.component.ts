@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { StatutAdmin } from 'src/app/Models/StatutAdmin';
 import { SuperAdmin } from 'src/app/Models/SuperAdmin';
 import { AdministrateurService } from 'src/app/Services/AdministrateurService/administrateur.service';
+import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
 
 @Component({
   selector: 'app-create-super-admin',
@@ -16,6 +18,7 @@ export class CreateSuperAdminComponent implements OnInit {
   constructor(
     private administrateurService: AdministrateurService,
     private router: Router,
+    private utilisateurService: UtilisateurService
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +33,8 @@ export class CreateSuperAdminComponent implements OnInit {
     this.administrateurService.addSuperAdmin(this.superAdmin).subscribe(
       (admin: SuperAdmin) => {
         console.log('SuperAdmin ajouté avec succès :', admin);
+        this.utilisateurService.getUtilisateur().setNom(admin.prenom);
+        this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.superAdmin);
         this.resetForm();
       },
       (error) => {

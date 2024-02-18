@@ -19,18 +19,20 @@
         </div>
         <div class="form-group">
             <label for="dateInscription">Date d'inscription :</label>
-            <input type="text" id="dateInscription" name="dateInscription" [(ngModel)]="patient.dateDInscription" required>
-            <small>Format: jj/mm/aaaa</small>
+            <input matInput [matDatepicker]="inscriptionPicker" id="dateInscription" name="dateInscription" [(ngModel)]="patient.dateDInscription" required>
+            <mat-datepicker-toggle matSuffix [for]="inscriptionPicker"></mat-datepicker-toggle>
+            <mat-datepicker #inscriptionPicker></mat-datepicker>
         </div>
         <div class="form-group">
             <label for="dateNaissance">Date de naissance :</label>
-            <input type="text" id="dateNaissance" name="dateNaissance" [(ngModel)]="patient.dateDeNaissance" required>
-            <small>Format: jj/mm/aaaa</small>
+            <input matInput [matDatepicker]="naissancePicker" id="dateNaissance" name="dateNaissance" [(ngModel)]="patient.dateDeNaissance" required>
+            <mat-datepicker-toggle matSuffix [for]="naissancePicker"></mat-datepicker-toggle>
+            <mat-datepicker #naissancePicker></mat-datepicker>
         </div>
         <div class="form-group">
             <label for="ville">Adresse :</label>
             <div class="adresse-group">
-                <input type="text" id="num" [(ngModel)]="adresse.zip_code" name="num" placeholder="Saisissez votre numéro de rue" required >
+                <input type="text" id="num" [(ngModel)]="adresse.zipCode" name="num" placeholder="Saisissez votre numéro de rue" required >
                 <input type="text" id="rue" [(ngModel)]="adresse.rue" name="rue" placeholder="Saisissez votre nom de rue" required>
             </div>
             <input type="text" id="ville" [(ngModel)]="adresse.ville" name="ville" placeholder="Ville" required>

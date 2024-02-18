@@ -42,7 +42,6 @@ export class AuthentificationComponent implements OnInit {
 
     
     if (this.submitButtonText === this.se_connecter) {
-
       this.updateUtilisateur();
       this.router.navigate(['centres']);
     } else {
@@ -69,7 +68,7 @@ export class AuthentificationComponent implements OnInit {
     if(this.selectedStatut === 'patient') {
       this.patientService.getPatientByEmail(this.email)
         .subscribe(patient => {
-          this.utilisateurService.getUtilisateur().setNom(patient.nom);
+          this.utilisateurService.getUtilisateur().setNom(patient.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
         });
     }
@@ -77,7 +76,7 @@ export class AuthentificationComponent implements OnInit {
     if (this.selectedStatut === 'medecin') {
       this.medecinService.getMedecinByEmail(this.email)
         .subscribe(medecin => {
-          this.utilisateurService.getUtilisateur().setNom(medecin.nom);
+          this.utilisateurService.getUtilisateur().setNom(medecin.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.medecin);
         });
     }
@@ -85,7 +84,7 @@ export class AuthentificationComponent implements OnInit {
     if (this.selectedStatut === 'admin' && this.selectedAdminType === 'adminCentre') {
       this.administrateurService.getAdministrateurCentreByEmail(this.email)
         .subscribe(adminCentre => {
-          this.utilisateurService.getUtilisateur().setNom(adminCentre.nom);
+          this.utilisateurService.getUtilisateur().setNom(adminCentre.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.adminCentre);
         });
     }
@@ -93,7 +92,7 @@ export class AuthentificationComponent implements OnInit {
     if (this.selectedStatut === 'admin' && this.selectedAdminType === 'superAdmin') {
       this.administrateurService.getSuperAdminByEmail(this.email)
         .subscribe(superAdmin => {
-          this.utilisateurService.getUtilisateur().setNom(superAdmin.nom);
+          this.utilisateurService.getUtilisateur().setNom(superAdmin.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.superAdmin);
         });
     }

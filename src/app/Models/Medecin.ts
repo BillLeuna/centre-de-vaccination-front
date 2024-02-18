@@ -7,7 +7,7 @@ export class Medecin {
     nom!: string;
     prenom!: string;
     email!: string;
-    telephone!: number;
+    telephone!: string;
     centre!: Centre;
     patients!: Patient[];
 

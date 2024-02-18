@@ -7,12 +7,12 @@ export class Adresse {
     id!: number;
     ville!: String;
     rue!: String;
-    zip_code!: number;
+    zipCode!: number;
     medecins!: Medecin[];
     patient!: Patient;
     centre!: Centre;
 
     toString(): String {
-        return this.zip_code + ' ' + this.rue + ' ' + this.ville; 
+        return this.zipCode + ' ' + this.rue + ' ' + this.ville; 
     }
 }
