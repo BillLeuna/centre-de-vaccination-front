@@ -19,4 +19,8 @@ export class CentreService {
   getCentreById(centreId: number): Observable<Centre> {
     return this.http.get<Centre>(this.apiUrl + '/get/' + centreId);
   }
+
+  addCentre(centre: Centre): Observable<Centre> {
+    return this.http.post<Centre>(this.apiUrl + '/create', centre);
+  }
 }

@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CreateAdminCentreComponent } from './Components/Create/create-admin-centre/create-admin-centre.component';
 import { CreateSuperAdminComponent } from './Components/Create/create-super-admin/create-super-admin.component';
 import { AdministrateursComponent } from './Components/administrateurs/administrateurs.component';
+import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { AdministrateursComponent } from './Components/administrateurs/administr
     CreateAdminCentreComponent,
     CreateSuperAdminComponent,
     AdministrateursComponent,
+    CreateCentreComponent,
   ],
   imports: [
     BrowserModule,
