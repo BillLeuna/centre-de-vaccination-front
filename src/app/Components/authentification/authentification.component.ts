@@ -70,6 +70,7 @@ export class AuthentificationComponent implements OnInit {
         .subscribe(patient => {
           this.utilisateurService.getUtilisateur().setNom(patient.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
+          this.utilisateurService.getUtilisateur().setEmail(patient.email);
         });
     }
 
@@ -78,6 +79,7 @@ export class AuthentificationComponent implements OnInit {
         .subscribe(medecin => {
           this.utilisateurService.getUtilisateur().setNom(medecin.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.medecin);
+          this.utilisateurService.getUtilisateur().setEmail(medecin.email);
         });
     }
 
@@ -86,6 +88,7 @@ export class AuthentificationComponent implements OnInit {
         .subscribe(adminCentre => {
           this.utilisateurService.getUtilisateur().setNom(adminCentre.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.adminCentre);
+          this.utilisateurService.getUtilisateur().setEmail(adminCentre.email);
         });
     }
     
@@ -94,6 +97,7 @@ export class AuthentificationComponent implements OnInit {
         .subscribe(superAdmin => {
           this.utilisateurService.getUtilisateur().setNom(superAdmin.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.superAdmin);
+          this.utilisateurService.getUtilisateur().setEmail(superAdmin.email);
         });
     }
     

@@ -27,7 +27,7 @@ export class AdministrateursComponent implements OnInit {
   }
 
   getAdminCentre(): void {
-    this.administrateurService.getAdministrateurCentres()
+    this.administrateurService.getAdministrateursCentres()
       .subscribe(allAdminCentre => {
         this.allAdminCentre = allAdminCentre;
       });

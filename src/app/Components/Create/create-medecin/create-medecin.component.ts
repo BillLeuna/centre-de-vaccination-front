@@ -47,6 +47,7 @@ export class CreateMedecinComponent implements OnInit {
         this.resetForm();
         this.utilisateurService.getUtilisateur().setNom(medecin.prenom);
         this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.medecin);
+        this.utilisateurService.getUtilisateur().setEmail(medecin.email);
       },
       (error) => {
         console.error('Erreur lors de l\'ajout du medecin :', error);
