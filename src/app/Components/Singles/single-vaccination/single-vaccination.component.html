@@ -15,8 +15,12 @@
             <div class="info-value">{{ vaccination.centre }}</div>
         </div>
         <div class="patient-info">
-            <div class="info-label">Date :</div>
-            <div class="info-value">{{ vaccination.date | date:'short' }}</div>
+            <div class="info-label">Date de réservation :</div>
+            <div class="info-value">{{ vaccination.dateReservation | date:'short' }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Date de réservation :</div>
+            <div class="info-value">{{ vaccination.dateVaccination | date:'short' }}</div>
         </div>
         <div class="patient-info">
             <div class="info-label">Statut :</div>
