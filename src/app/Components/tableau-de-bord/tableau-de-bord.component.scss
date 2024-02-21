@@ -8,3 +8,34 @@ h2 {
     margin: 0;
     font-size: 24px;
 }
+
+.button-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin: auto;
+
+    .button{
+        border: 1px solid #3498db;
+        color: #3498db;
+        background-color: #3498db;
+        margin: auto;
+        width: 150px;
+        height: 60px;
+        border-radius: 40px;
+        padding: 10px;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        color: aliceblue;
+
+
+        .button:hover{
+            border: 1px solid #3498db;
+            color: #3498db;
+            background-color: aliceblue;
+            width: 160px;
+            height: 65px;
+        }
+    }
+}

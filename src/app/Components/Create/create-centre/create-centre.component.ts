@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Adresse } from 'src/app/Models/Adresse';
 import { Centre } from 'src/app/Models/Centre';
 import { CentreService } from 'src/app/Services/CentreService/centre.service';
-import { CentreComponent } from '../../centre/centre.component';
 
 @Component({
   selector: 'app-create-centre',
@@ -33,7 +32,7 @@ export class CreateCentreComponent {
         this.resetForm();
       },
       (error) => {
-        console.error('Erreur lors de l\'ajout du patient :', error);
+        console.error('Erreur lors de l\'ajout du centre :', error);
       }
     );
     this.router.navigate(['centres']);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { Utilisateur } from 'src/app/Models/Utilisateur';
 import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
 
@@ -17,5 +18,18 @@ export class TableauDeBordComponent implements OnInit{
 
   ngOnInit(): void {
     this.utilisateur = this.utilisateurService.getUtilisateur();
+  }
+
+  isMedecin() : Boolean {
+    return this.utilisateur.getRole() == RoleUtilisateur.medecin;
+  }
+  isPatient() : Boolean {
+    return this.utilisateur.getRole() == RoleUtilisateur.patient;
+  }
+  isAdminCentre() : Boolean {
+    return this.utilisateur.getRole() == RoleUtilisateur.adminCentre;
+  }
+  isSuperAdmin() : Boolean {
+    return this.utilisateur.getRole() == RoleUtilisateur.superAdmin;
   }
 }

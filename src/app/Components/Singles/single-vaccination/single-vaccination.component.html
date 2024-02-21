@@ -1,0 +1,27 @@
+<app-menu></app-menu>
+<div class="single-patient-container">
+    <h2>Détails de la vaccination</h2>
+    <div class="patient-card">
+        <div class="patient-info">
+            <div class="info-label">Nom du patient:</div>
+            <div class="info-value">{{ nom }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Prénom:</div>
+            <div class="info-value">{{ prenom }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ vaccination.centre }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Date :</div>
+            <div class="info-value">{{ vaccination.date | date:'short' }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Statut :</div>
+            <div class="info-value">{{ vaccination.statutDossierPatient }}</div>
+        </div>
+    </div>
+</div>
+  

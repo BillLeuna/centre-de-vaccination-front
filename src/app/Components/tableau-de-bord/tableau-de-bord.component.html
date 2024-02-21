@@ -5,20 +5,25 @@
 </div>
 
 <!-- Super Admin View -->
-<!-- <div *ngIf="utilisateur.statut === StatutAdmin.superAdmin">
-<app-gestion-centres></app-gestion-centres>
-<app-gestion-administrateurs></app-gestion-administrateurs>
-</div> -->
+<div class="button-wrap">
+    <a routerLink="/centres" class="button">Gestion des centres</a>
+    <a routerLink="/medecins" class="button">Gestion des médécins</a>
+    <a routerLink="/patients" class="button">Gestion des patients</a>
+    <a routerLink="/admin" class="button">Gestion des administrateurs</a>
+</div>
 
-<!-- Administrateur View -->
-<!-- <div *ngIf="utilisateur.statut === StatutAdmin.adminClassique">
-<app-gestion-medecins></app-gestion-medecins>
-<app-gestion-reservations></app-gestion-reservations>
-</div> -->
+<!-- AdminCentre View -->
+<div *ngIf="isAdminCentre()">
+    <a routerLink="/centres" class="button">Gestion des centres</a>
+    <a routerLink="/medecins" class="button">Gestion des médécins</a>
+    <a routerLink="/patients" class="button">Gestion des patients</a>
+</div> 
 
 <!-- Medecin View -->
-<!-- <div *ngIf="utilisateur.statut === StatutAdmin.medecin">
-<app-recherche-personne></app-recherche-personne>
-<app-valider-vaccination></app-valider-vaccination>
-</div> -->
+<div *ngIf="isMedecin()">
+</div>
+
+<!-- Medecin View -->
+<div *ngIf="isPatient()">
+</div>
   
