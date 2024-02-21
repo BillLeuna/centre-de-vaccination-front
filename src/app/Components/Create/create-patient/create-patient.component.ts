@@ -38,6 +38,7 @@ export class CreatePatientComponent implements OnInit{
         this.resetForm();
         this.utilisateurService.getUtilisateur().setNom(patient.prenom);
         this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
+        this.utilisateurService.getUtilisateur().setEmail(patient.email);
       },
       (error) => {
         console.error('Erreur lors de l\'ajout du patient :', error);

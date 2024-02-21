@@ -13,8 +13,9 @@
     </div>
   
     <div class="centre-operations">
-        <button *ngIf="isPatient()" (click)="inscriptionAuCentre()">S'inscrire à ce Centre</button>
-        <button (click)="supprimerCentre()">Supprimer le Centre</button>
+        <button *ngIf="isPatient()" (click)="reserverVaccination()">Réserver une vaccination</button>
+        <button *ngIf="isAdminOfThisCenterORSuperAdmin()" (click)="modifierCentre()">Mofifider le Centre</button>
+        <button *ngIf="isAdminOfThisCenterORSuperAdmin()" (click)="supprimerCentre()">Supprimer le Centre</button>
       <button (click)="goBack()">Retour</button>
     </div>
   </div>

@@ -1,15 +1,16 @@
 import { Centre } from "./Centre";
-import { DossierPatient } from "./DossierPatient";
 import { Medecin } from "./Medecin";
 import { Patient } from "./Patient";
+import { StatutDossierPatient } from "./StatutDossierPatient";
 
-export class Vaccination implements DossierPatient{
+export class Vaccination {
 
     id!:number;
     patient!: Patient;
     medecin!: Medecin;
     centre!: Centre;
-    date!: Date;
-    statutDossierPatient!: StatutDossierPatient.vaccination; 
+    dateReservation!: Date;
+    dateVaccination!: Date;
+    statutDossierPatient!: StatutDossierPatient; 
 
 }

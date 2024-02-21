@@ -2,9 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Centre } from 'src/app/Models/Centre';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
+import { StatutDossierPatient } from 'src/app/Models/StatutDossierPatient';
 import { Utilisateur } from 'src/app/Models/Utilisateur';
+import { Vaccination } from 'src/app/Models/Vaccination';
 import { CentreService } from 'src/app/Services/CentreService/centre.service';
+import { PatientService } from 'src/app/Services/PatientService/patient.service';
 import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
+import { VaccinationService } from 'src/app/Services/VaccinationService/vaccination.service';
 
 @Component({
   selector: 'app-single-centre',
@@ -16,11 +20,14 @@ export class SingleCentreComponent implements OnInit{
   centreId!: number;
   centre: Centre = new Centre();
   utilisateur!: Utilisateur;
+  vaccination: Vaccination = new Vaccination();
 
   constructor(private route: ActivatedRoute,
               private centreService: CentreService,
               private router: Router,
-              private utilisateurService: UtilisateurService) { }
+              private utilisateurService: UtilisateurService,
+              private vaccinationService: VaccinationService,
+              private patientService: PatientService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -48,15 +55,45 @@ export class SingleCentreComponent implements OnInit{
       return false;
   }
 
-  inscriptionAuCentre(): void {
-    console.log(this.isPatient());
-    
+  isAdminOfThisCenterORSuperAdmin(): boolean {
+    if (this.utilisateur.getRole() === RoleUtilisateur.superAdmin) {
+      return true;
+    }
+    if (this.utilisateur.getRole() === RoleUtilisateur.adminCentre) {
+      // Utilisation de find pour vérifier si l'utilisateur est un médecin du centre
+      const isMedecinDuCentre = this.centre.medecins.find(medecin => this.utilisateur.getNom() === medecin.nom);
+      // Si isMedecinDuCentre n'est pas undefined, cela signifie que l'utilisateur est un médecin du centre
+      if (isMedecinDuCentre !== undefined) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  reserverVaccination() : void {
+    this.vaccination.centre = this.centre;
+    this.vaccination.statutDossierPatient = StatutDossierPatient.reservation;
+    this.patientService.getPatientByEmail(this.utilisateur.getEmail())
+      .subscribe(patient => {
+        this.vaccination.patient = patient;
+    });
+    this.vaccination.dateReservation = new Date();
+
+    this.vaccinationService.createVaccination(this.vaccination)
+      .subscribe(vaccination => {
+        console.log(vaccination);
+    });
   }
 
   supprimerCentre(): void {
     // Logique pour supprimer le centre
   }
 
+  modifierCentre(): void {
+
+  }
+ 
+  
   goBack(): void {
     this.router.navigate(['centres']);
   }

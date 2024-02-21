@@ -1,7 +1,6 @@
 import { Administrateur } from "./Administrateur";
 import { Centre } from "./Centre";
 import { Medecin } from "./Medecin";
-import { Reservation } from "./Reservation";
 import { StatutAdmin } from "./StatutAdmin";
 
 

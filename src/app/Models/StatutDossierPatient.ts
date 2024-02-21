@@ -1,6 +1,4 @@
-enum StatutDossierPatient {
+export enum StatutDossierPatient {
     reservation,
-    vaccination,
-    Patientvaccine
-
+    vaccination
 }

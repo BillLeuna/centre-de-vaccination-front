@@ -47,6 +47,7 @@ export class CreateAdminCentreComponent implements OnInit {
         console.log('AdminCentre ajouté avec succès :', admin);
         this.utilisateurService.getUtilisateur().setNom(admin.prenom);
         this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.adminCentre);
+        this.utilisateurService.getUtilisateur().setEmail(admin.email);
         this.resetForm();
       },
       (error) => {

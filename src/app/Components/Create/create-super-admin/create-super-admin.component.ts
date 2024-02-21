@@ -35,6 +35,7 @@ export class CreateSuperAdminComponent implements OnInit {
         console.log('SuperAdmin ajouté avec succès :', admin);
         this.utilisateurService.getUtilisateur().setNom(admin.prenom);
         this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.superAdmin);
+        this.utilisateurService.getUtilisateur().setEmail(admin.email);
         this.resetForm();
       },
       (error) => {
