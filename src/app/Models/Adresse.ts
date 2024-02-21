@@ -5,14 +5,11 @@ import { Patient } from "./Patient";
 export class Adresse {
 
     id!: number;
-    ville!: String;
-    rue!: String;
+    ville!: string;
+    rue!: string;
     zipCode!: number;
     medecins!: Medecin[];
     patient!: Patient;
     centre!: Centre;
 
-    toString(): String {
-        return this.zipCode + ' ' + this.rue + ' ' + this.ville; 
-    }
 }
