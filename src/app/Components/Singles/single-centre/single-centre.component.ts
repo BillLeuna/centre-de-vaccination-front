@@ -21,6 +21,7 @@ export class SingleCentreComponent implements OnInit{
   centre: Centre = new Centre();
   utilisateur!: Utilisateur;
   vaccination: Vaccination = new Vaccination();
+  adresseToString!: string;
 
   constructor(private route: ActivatedRoute,
               private centreService: CentreService,
@@ -35,16 +36,16 @@ export class SingleCentreComponent implements OnInit{
       if (idParam !== null) {
         this.centreId = +idParam;
         this.loadCentreDetails();
-        console.log(this.centre.getAdresseToString());
         
       }
     });
-    this.utilisateur = this.utilisateurService.getUtilisateur();
+    this.utilisateur = this.utilisateurService.getUtilisateur();    
   }
 
   loadCentreDetails(): void {
     this.centreService.getCentreById(this.centreId).subscribe(centre => {
       this.centre = centre;
+      this.adresseToString  = centre.adresse.zipCode.toString() + ' ' + centre.adresse.rue + ' ' + centre.adresse.ville;
     });
   }
 
@@ -71,18 +72,23 @@ export class SingleCentreComponent implements OnInit{
   }
 
   reserverVaccination() : void {
+    console.log(this.centre);
+    console.log(this.centre.adresse);
+    
     this.vaccination.centre = this.centre;
     this.vaccination.statutDossierPatient = StatutDossierPatient.reservation;
     this.patientService.getPatientByEmail(this.utilisateur.getEmail())
       .subscribe(patient => {
         this.vaccination.patient = patient;
-    });
-    this.vaccination.dateReservation = new Date();
+        this.vaccination.dateReservation = new Date();
 
-    this.vaccinationService.createVaccination(this.vaccination)
-      .subscribe(vaccination => {
-        console.log(vaccination);
+        this.vaccinationService.createVaccination(this.vaccination)
+          .subscribe(vaccination => {
+            console.log(vaccination);
+        });
     });
+    this.router.navigate(['tableau-de-bord']);
+   
   }
 
   supprimerCentre(): void {
@@ -97,4 +103,6 @@ export class SingleCentreComponent implements OnInit{
   goBack(): void {
     this.router.navigate(['centres']);
   }
+
+
 }

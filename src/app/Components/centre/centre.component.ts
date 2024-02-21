@@ -58,4 +58,8 @@ export class CentreComponent implements OnInit{
   goToSingleCentre(centreId: number): void {
     this.router.navigate(['centres', centreId]);
   }
+
+  getAdresseToString(centre: Centre) : string {
+    return centre.adresse.zipCode + ' ' + centre.adresse.rue + ' ' + centre.adresse.ville;
+  }
 }
