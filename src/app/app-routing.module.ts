@@ -35,7 +35,8 @@ const routes: Routes = [
   { path: 'create-medecin', component: CreateMedecinComponent },
   { path: 'create-centre', component: CreateCentreComponent },
   { path: 'administrateurs', component: AdministrateursComponent },
-  { path: 'tableau-de-bord', component: TableauDeBordComponent}
+  { path: 'create-admin-centre', component: CreateAdminCentreComponent },
+  { path: 'create-super-admin', component: CreateSuperAdminComponent }
 
 ];
 
