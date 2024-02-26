@@ -7,7 +7,7 @@
         <option *ngFor="let statut of statuts" [value]="statut">{{ statut }}</option>
       </select>
     </div>
-    <div *ngIf="selectedStatut === 'admin'" class="form-group">
+    <div *ngIf="selectedStatut === 'admin' && submitButtonText === se_connecter" class="form-group">
       <label for="adminType">Type d'administrateur :</label>
       <select id="adminType" [(ngModel)]="selectedAdminType" name="adminType" required>
         <option *ngFor="let typeAdmin of typesAdmin" [value]="typeAdmin">{{ typeAdmin }}</option>

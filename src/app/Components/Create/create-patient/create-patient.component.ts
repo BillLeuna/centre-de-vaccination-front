@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/app/Models/Patient';
 import { PatientService } from 'src/app/Services/PatientService/patient.service'
 import { Adresse } from 'src/app/Models/Adresse';
@@ -17,12 +17,20 @@ export class CreatePatientComponent implements OnInit{
   adresse: Adresse = new Adresse();
 
   constructor(private patientService: PatientService,
+              private route: ActivatedRoute,
               private router: Router,
               private utilisateurService: UtilisateurService) {
 
   }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const email = params.get('email');
+      if (email !== null) {
+        this.patient.email = email;
+      }
+    });
+    this.patient.dateDInscription = new Date();
   }
 
   resetForm() {

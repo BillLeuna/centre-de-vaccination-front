@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Authentification } from 'src/app/Models/Authentification';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { AdministrateurService } from 'src/app/Services/AdministrateurService/administrateur.service';
 import { AuthentificationService } from 'src/app/Services/AuthentificationService/authentification.service';
@@ -23,6 +24,7 @@ export class AuthentificationComponent implements OnInit {
   selectedAdminType: string = 'adminCentre'; // Valeur par défaut pour l'administrateur
   statuts: string[] = ['patient', 'medecin', 'admin'];
   typesAdmin: string[] = ['adminCentre', 'superAdmin'];
+  authentification: Authentification = new Authentification();
 
   constructor(private router: Router, 
               private authentificationService: AuthentificationService,
@@ -38,18 +40,27 @@ export class AuthentificationComponent implements OnInit {
   }
 
   onSubmit() {
-    this.authentificationService.setAuthentifie(true);
-
-    
+    this.authentification.email = this.email;
+    this.authentification.motDePasse = this.motDePasse;
     if (this.submitButtonText === this.se_connecter) {
-      this.updateUtilisateur();
-      this.router.navigate(['centres']);
-    } else {
-      if (this.selectedStatut == 'patient'){
-        this.router.navigate(['create-patient']);
-      }else if (this.selectedStatut == 'medecin'){
-        this.router.navigate(['create-medecin']);
-      }
+      this.authentificationService.authenticateUser(this.authentification)
+        .subscribe(authentification => {
+          console.log(authentification);
+          this.updateUtilisateur();
+          this.router.navigate(['tableau-de-bord']);
+      });
+    }
+    if (this.submitButtonText === this.creer_un_compte) {
+      this.authentificationService.createAuthentification(this.authentification)
+        .subscribe(authentification => {
+          console.log(authentification);
+          if(this.selectedStatut === 'patient') {
+            this.router.navigate(['create-patient', this.email]);
+          }
+          if (this.selectedStatut === 'medecin') {
+            this.router.navigate(['create-medecin']);
+          }
+      });
     }
   }
 
