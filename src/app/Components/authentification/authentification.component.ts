@@ -39,11 +39,14 @@ export class AuthentificationComponent implements OnInit {
 
   onSubmit() {
     this.authentificationService.setAuthentifie(true);
-
     
     if (this.submitButtonText === this.se_connecter) {
       this.updateUtilisateur();
-      this.router.navigate(['centres']);
+      if (this.selectedAdminType == 'superAdmin') {
+        this.router.navigate(['tableau-de-bord']);
+      } else if (this.selectedAdminType == 'adminCentre') {
+        this.router.navigate(['centres']);
+      }
     } else {
       if (this.selectedStatut == 'patient'){
         this.router.navigate(['create-patient']);

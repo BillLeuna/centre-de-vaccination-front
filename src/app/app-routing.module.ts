@@ -13,6 +13,9 @@ import { SingleMedecinComponent } from './Components/Singles/single-medecin/sing
 import { SingleCentreComponent } from './Components/Singles/single-centre/single-centre.component';
 import { CreateMedecinComponent } from './Components/Create/create-medecin/create-medecin.component';
 import { AdministrateursComponent } from './Components/administrateurs/administrateurs.component';
+import { CreateAdminCentreComponent } from './Components/Create/create-admin-centre/create-admin-centre.component';
+import { CreateSuperAdminComponent } from './Components/Create/create-super-admin/create-super-admin.component';
+import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -27,7 +30,10 @@ const routes: Routes = [
   { path: 'medecins/:id', component: SingleMedecinComponent },
   { path: 'centres/:id', component: SingleCentreComponent },
   { path: 'create-patient', component: CreatePatientComponent },
+  { path: 'create-admin-centre', component:  CreateAdminCentreComponent},
+  { path: 'create-super-admin', component: CreateSuperAdminComponent },
   { path: 'create-medecin', component: CreateMedecinComponent },
+  { path: 'create-centre', component: CreateCentreComponent },
   { path: 'administrateurs', component: AdministrateursComponent },
   { path: 'tableau-de-bord', component: TableauDeBordComponent}
 

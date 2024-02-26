@@ -88,7 +88,6 @@ export class SingleCentreComponent implements OnInit{
         });
     });
     this.router.navigate(['tableau-de-bord']);
-   
   }
 
   supprimerCentre(): void {
