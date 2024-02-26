@@ -11,9 +11,9 @@ export class MenuComponent {
     { label: 'Patients', route: '/patients' },
     { label: 'Médecins', route: '/medecins' },
     { label: 'Centres de vaccination', route: '/centres' },
-    { label: 'Administrateurs de centre', route: '/admin' },
+    { label: 'Vaccinations', route: '/vaccinations' },
+    { label: 'Administrateurs', route: '/administrateurs' },
     { label: 'Tableau de bord', route: '/tableau-de-bord' },
-    { label: 'Mon Compte', route: '/mon-compte' },
-    { label: 'Administrateurs', route: '/administrateurs' }
+    { label: 'Mon Compte', route: '/mon-compte' }
   ];
 }

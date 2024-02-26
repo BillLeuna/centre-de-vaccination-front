@@ -36,4 +36,8 @@ export class VaccinationService {
   vaccinate(vaccination: Vaccination, medecin: Medecin): Observable<Vaccination> {
     return this.http.put<Vaccination>(`${this.apiUrl}/vaccinate`, { vaccination, medecin });
   }
+
+  getVaccinationByPatientId(patientId: number): Observable<Vaccination> {
+    return this.http.get<Vaccination>(`${this.apiUrl}/vaccinations?patientId=${patientId}`);
+  }
 }

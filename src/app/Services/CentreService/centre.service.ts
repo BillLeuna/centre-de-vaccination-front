@@ -20,10 +20,6 @@ export class CentreService {
     return this.http.get<Centre>(`${this.apiUrl}/get/${centreId}`);
   }
 
-  addCentre(centre: Centre): Observable<Centre> {
-    return this.http.post<Centre>(`${this.apiUrl}/create`, centre);
-  }
-
   updateCentre(centre: Centre): Observable<Centre> {
     return this.http.put<Centre>(`${this.apiUrl}/update`, centre);
   }
