@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Medecin } from 'src/app/Models/Medecin';
 import { Patient } from 'src/app/Models/Patient';
+import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { StatutDossierPatient } from 'src/app/Models/StatutDossierPatient';
 import { Vaccination } from 'src/app/Models/Vaccination';
 import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
@@ -59,11 +60,15 @@ export class SinglePatientComponent implements OnInit{
     this.router.navigate(['tableau-de-bord']);
   }
 
-  supprimerPatient(): void {
-    // Logique pour supprimer le patient
-  }
-
   goBack(): void {
     this.router.navigate(['patients']);
+  }
+
+  isMedecin(): boolean {
+    let role: RoleUtilisateur = this.utilisateurService.getUtilisateur().getRole();
+    if (role == RoleUtilisateur.medecin)
+      return true;
+    else 
+      return false;
   }
 }

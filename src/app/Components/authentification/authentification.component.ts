@@ -43,23 +43,26 @@ export class AuthentificationComponent implements OnInit {
     this.authentification.email = this.email;
     this.authentification.motDePasse = this.motDePasse;
     if (this.submitButtonText === this.se_connecter) {
-      this.authentificationService.authenticateUser(this.authentification)
-        .subscribe(authentification => {
-          console.log(authentification);
-          this.updateUtilisateur();
-          this.router.navigate(['tableau-de-bord']);
-      });
+      // this.authentificationService.authenticateUser(this.authentification)
+      //   .subscribe(authentification => {
+      //     console.log(authentification);
+      //     this.updateUtilisateur();
+      //     this.router.navigate(['tableau-de-bord']);
+      // });
+      this.updateUtilisateur();
+      this.router.navigate(['tableau-de-bord']);
     }
     if (this.submitButtonText === this.creer_un_compte) {
       this.authentificationService.createAuthentification(this.authentification)
         .subscribe(authentification => {
           console.log(authentification);
           if(this.selectedStatut === 'patient') {
-            this.router.navigate(['create-patient', this.email]);
+            this.router.navigate(['create-patient']);
           }
           if (this.selectedStatut === 'medecin') {
             this.router.navigate(['create-medecin']);
           }
+          this.utilisateurService.getUtilisateur().setEmail(this.email);
       });
     }
   }

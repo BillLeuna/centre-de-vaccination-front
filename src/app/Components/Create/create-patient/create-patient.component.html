@@ -11,7 +11,7 @@
         </div>
         <div class="form-group">
             <label for="email">Email :</label>
-            <input type="email" id="email" [(ngModel)]="patient.email" name="email" placeholder="Saisissez votre email" [readonly]="true">
+            <input type="email" id="email" [(ngModel)]="patient.email" name="email" placeholder="Saisissez votre email" [readonly]="isNotAdminCentre() ? true : false">
         </div>
         <div class="form-group">
             <label for="tel">Téléphone :</label>

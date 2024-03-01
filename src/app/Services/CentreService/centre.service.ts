@@ -27,4 +27,8 @@ export class CentreService {
   deleteCentre(centreId: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/delete/${centreId}`);
   }
+
+  addCentre(centre: Centre): Observable<Centre> {
+    return this.http.post<Centre>(this.apiUrl + '/create', centre);
+  }
 }

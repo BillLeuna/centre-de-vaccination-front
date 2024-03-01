@@ -35,8 +35,7 @@ export class SingleCentreComponent implements OnInit{
       const idParam = params.get('id');
       if (idParam !== null) {
         this.centreId = +idParam;
-        this.loadCentreDetails();
-        
+        this.loadCentreDetails(); 
       }
     });
     this.utilisateur = this.utilisateurService.getUtilisateur();    
@@ -62,7 +61,7 @@ export class SingleCentreComponent implements OnInit{
     }
     if (this.utilisateur.getRole() === RoleUtilisateur.adminCentre) {
       // Utilisation de find pour vérifier si l'utilisateur est un médecin du centre
-      const isMedecinDuCentre = this.centre.medecins.find(medecin => this.utilisateur.getNom() === medecin.nom);
+      let isMedecinDuCentre = this.centre.medecins!= null? this.centre.medecins.find(medecin => this.utilisateur.getEmail() === medecin.email) : undefined;
       // Si isMedecinDuCentre n'est pas undefined, cela signifie que l'utilisateur est un médecin du centre
       if (isMedecinDuCentre !== undefined) {
         return true;
@@ -91,7 +90,16 @@ export class SingleCentreComponent implements OnInit{
   }
 
   supprimerCentre(): void {
-    // Logique pour supprimer le centre
+    this.centreService.deleteCentre(this.centre.id).subscribe({
+      next: () => {
+        console.log('Le centre a été supprimé avec succès.');
+        this.goBack();
+      },
+      error: (error) => {
+        console.error('Une erreur s\'est produite lors de la suppression du centre :', error);
+      }
+      
+    });
   }
 
   modifierCentre(): void {

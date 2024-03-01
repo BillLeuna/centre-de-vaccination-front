@@ -17,7 +17,8 @@
         <div class="form-group">
             <label for="centre">Centre hospitalier :</label>
             <select id="centre" [(ngModel)]="admin.centre" name="centre" required>
-                <option *ngFor="let centre of centres" [value]="centre" placeholder="Choisissez son centre">{{ centre }}</option>
+                <option *ngFor="let centre of centres" [ngValue]="centre"
+                        placeholder="Choisissez son centre"> {{ centre.nom }} -- {{ centretoString(centre) }} </option>
             </select>
         </div>
         <button type="submit">Enregistrer</button>

@@ -18,18 +18,34 @@ export class TableauDeBordComponent implements OnInit{
 
   ngOnInit(): void {
     this.utilisateur = this.utilisateurService.getUtilisateur();
+  
   }
 
   isMedecin() : Boolean {
-    return this.utilisateur.getRole() == RoleUtilisateur.medecin;
+    if (this.utilisateur.getRole() === RoleUtilisateur.medecin)
+      return true;
+    else
+      return false;
   }
+
   isPatient() : Boolean {
-    return this.utilisateur.getRole() == RoleUtilisateur.patient;
+    if (this.utilisateur.getRole() === RoleUtilisateur.patient)
+      return true;
+    else
+      return false;
   }
+
   isAdminCentre() : Boolean {
-    return this.utilisateur.getRole() == RoleUtilisateur.adminCentre;
+    if (this.utilisateur.getRole() === RoleUtilisateur.adminCentre)
+      return true;
+    else
+      return false;
   }
+
   isSuperAdmin() : Boolean {
-    return this.utilisateur.getRole() == RoleUtilisateur.superAdmin;
+    if (this.utilisateur.getRole() === RoleUtilisateur.superAdmin)
+      return true;
+    else
+      return false;
   }
 }

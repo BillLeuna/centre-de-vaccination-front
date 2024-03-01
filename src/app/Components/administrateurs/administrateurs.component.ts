@@ -30,6 +30,7 @@ export class AdministrateursComponent implements OnInit {
     this.administrateurService.getAdministrateursCentres()
       .subscribe(allAdminCentre => {
         this.allAdminCentre = allAdminCentre;
+        this.filtredAdminCentre = allAdminCentre;
       });
   }
 
@@ -62,20 +63,8 @@ export class AdministrateursComponent implements OnInit {
     this.filtredAdminCentre = this.allAdminCentre;
   }
 
-  deleteAdmininistrateurCentre(adminId: number): void {
-    const confirmation = confirm('Êtes-vous sûr de vouloir supprimer cet administrateur de centre ?');
-    if (confirmation) {
-      this.administrateurService.deleteAdminCentre(adminId);
-      console.log('Suppression effectuée');
-    }
-  }
-
-  deleteSuperAdmininistrateur(adminId: number): void {
-    const confirmation = confirm('Êtes-vous sûr de vouloir supprimer cet administrateur de centre ?');
-    if (confirmation) {
-      this.administrateurService.deleteSuperAdmin(adminId);
-      console.log('Suppression effectuée');
-    }
+  goToSingleAdmin(adminCentreId: number) : void {
+    this.router.navigate(['administrateurs', adminCentreId]);
   }
 
 }

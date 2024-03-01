@@ -16,6 +16,8 @@ import { AdministrateursComponent } from './Components/administrateurs/administr
 import { CreateAdminCentreComponent } from './Components/Create/create-admin-centre/create-admin-centre.component';
 import { CreateSuperAdminComponent } from './Components/Create/create-super-admin/create-super-admin.component';
 import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
+import { VaccinationComponent } from './Components/vaccination/vaccination.component';
+import { SingleAdminComponent } from './Components/Singles/single-admin/single-admin.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -23,7 +25,6 @@ const routes: Routes = [
   { path: 'patients', component: PatientComponent },
   { path: 'medecins', component: MedecinComponent },
   { path: 'centres', component: CentreComponent },
-  { path: 'admin', component: AdministrateurComponent },
   { path: 'tableau-de-bord', component: TableauDeBordComponent },
   { path: 'mon-compte', component: MonCompteComponent },
   { path: 'patients/:id', component: SinglePatientComponent },
@@ -36,7 +37,9 @@ const routes: Routes = [
   { path: 'create-centre', component: CreateCentreComponent },
   { path: 'administrateurs', component: AdministrateursComponent },
   { path: 'create-admin-centre', component: CreateAdminCentreComponent },
-  { path: 'create-super-admin', component: CreateSuperAdminComponent }
+  { path: 'create-super-admin', component: CreateSuperAdminComponent },
+  { path: 'vaccinations', component: VaccinationComponent },
+  { path: 'administrateurs/:id', component: SingleAdminComponent }
 
 ];
 

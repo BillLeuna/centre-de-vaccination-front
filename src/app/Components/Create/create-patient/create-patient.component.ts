@@ -5,6 +5,8 @@ import { PatientService } from 'src/app/Services/PatientService/patient.service'
 import { Adresse } from 'src/app/Models/Adresse';
 import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
+import { AdresseService } from 'src/app/Services/AdresseService/adresse.service';
+import { Utilisateur } from 'src/app/Models/Utilisateur';
 
 @Component({
   selector: 'app-create-patient',
@@ -15,21 +17,18 @@ export class CreatePatientComponent implements OnInit{
 
   patient: Patient = new Patient();
   adresse: Adresse = new Adresse();
+  utilisateur!: Utilisateur;
 
   constructor(private patientService: PatientService,
-              private route: ActivatedRoute,
               private router: Router,
-              private utilisateurService: UtilisateurService) {
+              private utilisateurService: UtilisateurService,
+              private adresseService: AdresseService) {
 
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      const email = params.get('email');
-      if (email !== null) {
-        this.patient.email = email;
-      }
-    });
+    this.utilisateur = this.utilisateurService.getUtilisateur();
+    this.patient.email = this.isNotAdminCentre() ? this.utilisateur.getEmail() : '';
     this.patient.dateDInscription = new Date();
   }
 
@@ -39,19 +38,28 @@ export class CreatePatientComponent implements OnInit{
   }
 
   savePatient(): void {
-    this.patient.adresse = this.adresse;
-    this.patientService.addPatient(this.patient).subscribe(
-      (patient: Patient) => {
-        console.log('Patient ajouté avec succès :', patient);
-        this.resetForm();
-        this.utilisateurService.getUtilisateur().setNom(patient.prenom);
-        this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
-        this.utilisateurService.getUtilisateur().setEmail(patient.email);
-      },
-      (error) => {
-        console.error('Erreur lors de l\'ajout du patient :', error);
-      }
-    );
-    this.router.navigate(['centres']);
+    this.adresseService.createAdresse(this.adresse).subscribe(
+      adresse => {
+        this.patient.adresse = adresse;
+        this.patientService.addPatient(this.patient).subscribe(
+        (patient: Patient) => {
+          console.log('Patient ajouté avec succès :', patient);
+          this.resetForm();
+          if (this.utilisateur.getRole() != RoleUtilisateur.adminCentre) {
+            this.utilisateurService.getUtilisateur().setNom(patient.prenom);
+            this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
+            this.utilisateurService.getUtilisateur().setEmail(patient.email);
+          }
+        },
+        (error) => {
+          console.error('Erreur lors de l\'ajout du patient :', error);
+        }
+      );
+      this.router.navigate(['centres']);
+    });
+  }
+
+  isNotAdminCentre() : boolean {
+    return this.utilisateur.getRole() === RoleUtilisateur.adminCentre? false : true;
   }
 }
