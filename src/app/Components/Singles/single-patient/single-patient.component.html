@@ -25,7 +25,7 @@
     </div>
   
     <div class="patient-operations">
-      <button *ngIf="isMedecin()" (click)="validerVaccination()">Valider la Vaccination</button>
+      <button *ngIf="afficherBoutonSupprimer" (click)="supprimerPatient()">Supprimer le patient</button>
       <button (click)="goBack()">Retour</button>
     </div>
   </div>

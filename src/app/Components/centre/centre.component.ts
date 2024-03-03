@@ -11,7 +11,7 @@ import { CentreService } from 'src/app/Services/CentreService/centre.service';
   providers: [CentreService]
 })
 
-export class CentreComponent implements OnInit{
+export class CentreComponent implements OnInit {
 
   centres!: Centre[];
   filteredCentres: Centre[] = [];

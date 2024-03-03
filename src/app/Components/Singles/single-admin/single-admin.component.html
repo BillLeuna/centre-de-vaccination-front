@@ -21,8 +21,8 @@
     </div>
   
     <div class="admin-operations">
-        <button (click)="modifierAdminCentre()">Modifier l'admin de centre</button>
-        <button (click)="SupprimerAdminCentre()">Supprimer l'admin de centre</button>
+        <button *ngIf="afficherOptions" (click)="modifierAdminCentre()">Modifier l'admin de centre</button>
+        <button *ngIf="afficherOptions" (click)="SupprimerAdminCentre()">Supprimer l'admin de centre</button>
       <button (click)="goBack()">Retour</button>
     </div>
   </div>

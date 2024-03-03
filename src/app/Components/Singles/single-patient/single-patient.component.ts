@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Medecin } from 'src/app/Models/Medecin';
 import { Patient } from 'src/app/Models/Patient';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
-import { StatutDossierPatient } from 'src/app/Models/StatutDossierPatient';
+import { Utilisateur } from 'src/app/Models/Utilisateur';
 import { Vaccination } from 'src/app/Models/Vaccination';
-import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
 import { PatientService } from 'src/app/Services/PatientService/patient.service';
-import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
-import { VaccinationService } from 'src/app/Services/VaccinationService/vaccination.service';
 
 @Component({
   selector: 'app-single-patient',
@@ -19,15 +15,13 @@ export class SinglePatientComponent implements OnInit{
 
   vaccinationId!: number;
   vaccination!: Vaccination;
-  medecin!: Medecin;
   patientId!: number;
   patient: Patient = new Patient();
+  afficherBoutonSupprimer!: boolean;
+  utilisateur!: Utilisateur;
 
   constructor(private route: ActivatedRoute,
               private patientService: PatientService,
-              private vaccinationService: VaccinationService,
-              private utilisateurService: UtilisateurService,
-              private medecinService: MedecinService,
               private router: Router) { }
 
   ngOnInit(): void {
@@ -35,40 +29,30 @@ export class SinglePatientComponent implements OnInit{
       const idParam = params.get('id');
       if (idParam !== null) {
         this.patientId = +idParam;
-        this.loadPatientDetails();
+        this.patientService.getPatientById(this.patientId).subscribe(patient => {
+          this.patient = patient;
+          this.afficherBoutonSupprimer = this.utilisateur.getRole() == RoleUtilisateur.superAdmin ? true : false;
+        });
       }
     });
-  }
-
-  loadPatientDetails(): void {
-    this.patientService.getPatientById(this.patientId).subscribe(patient => {
-      this.patient = patient;
-    });
-  }
-
-  loadMedecinDetails(): Medecin {
-    // email: string = this.utilisateurService.getUtilisateur().getEmail();
-    this.medecinService.getMedecinByEmail(this.utilisateurService.getUtilisateur().getEmail()).subscribe(medecin => {
-      this.medecin = medecin;
-    });
-    return this.medecin;
-  }
-
-  validerVaccination(): void {    
-    this.vaccination.statutDossierPatient = StatutDossierPatient.vaccination;
-    this.vaccination.medecin = this.loadMedecinDetails();
-    this.router.navigate(['tableau-de-bord']);
   }
 
   goBack(): void {
     this.router.navigate(['patients']);
   }
-
-  isMedecin(): boolean {
-    let role: RoleUtilisateur = this.utilisateurService.getUtilisateur().getRole();
-    if (role == RoleUtilisateur.medecin)
-      return true;
-    else 
-      return false;
+  
+  supprimerPatient(): void {
+    const confirmation = confirm('Êtes-vous sûr de vouloir supprimer ce patient ?');
+    if (confirmation) {
+      this.patientService.deletePatient(this.patient.id).subscribe({
+        next: () => {
+          console.log('Patient supprimé');          
+          this.goBack();
+        },
+        error: (error) => {
+          console.error('Une erreur s\'est produite lors de la suppression du patient : ', error);
+        }
+      });
+    }
   }
 }

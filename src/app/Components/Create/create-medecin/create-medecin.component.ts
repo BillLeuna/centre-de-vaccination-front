@@ -4,6 +4,7 @@ import { Centre } from 'src/app/Models/Centre';
 import { Medecin } from 'src/app/Models/Medecin';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { Utilisateur } from 'src/app/Models/Utilisateur';
+import { AdministrateurService } from 'src/app/Services/AdministrateurService/administrateur.service';
 import { CentreService } from 'src/app/Services/CentreService/centre.service';
 import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
 import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
@@ -22,19 +23,28 @@ export class CreateMedecinComponent implements OnInit {
   constructor(private router: Router,
               private medecinService: MedecinService,
               private centreService: CentreService,
+              private adminCentreService: AdministrateurService,
               private utilisateurService: UtilisateurService){              
   }
 
   ngOnInit(): void {
-    this.getCentres();
     this.utilisateur = this.utilisateurService.getUtilisateur();
+    this.getCentres();
   }
 
   getCentres(): void {
-    this.centreService.getCentres()
-      .subscribe(centres => {
-        this.centres = centres;
+    if (this.utilisateur.getRole() == RoleUtilisateur.adminCentre) {
+      this.adminCentreService.getAdministrateurCentreByEmail(this.utilisateur.getEmail())
+        .subscribe( adminCentre => {
+          this.centres = [];
+          this.centres.push(adminCentre.centre);
       });
+    } else {
+      this.centreService.getCentres()
+        .subscribe(centres => {
+          this.centres = centres;
+      });
+    }
   }
 
     // Fonction pour réinitialiser les champs du formulaire après l'ajout du patient

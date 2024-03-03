@@ -1,10 +1,9 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthentificationComponent } from './Components/authentification/authentification.component';
 import { CentreComponent } from './Components/centre/centre.component';
 import { PatientComponent } from './Components/patient/patient.component';
 import { MedecinComponent } from './Components/medecin/medecin.component';
-import { AdministrateurComponent } from './Components/administrateur/administrateur.component';
 import { TableauDeBordComponent } from './Components/tableau-de-bord/tableau-de-bord.component';
 import { MonCompteComponent } from './Components/mon-compte/mon-compte.component';
 import { SinglePatientComponent } from './Components/Singles/single-patient/single-patient.component';
@@ -18,6 +17,7 @@ import { CreateSuperAdminComponent } from './Components/Create/create-super-admi
 import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
 import { VaccinationComponent } from './Components/vaccination/vaccination.component';
 import { SingleAdminComponent } from './Components/Singles/single-admin/single-admin.component';
+import { SingleVaccinationComponent } from './Components/Singles/single-vaccination/single-vaccination.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -39,7 +39,8 @@ const routes: Routes = [
   { path: 'create-admin-centre', component: CreateAdminCentreComponent },
   { path: 'create-super-admin', component: CreateSuperAdminComponent },
   { path: 'vaccinations', component: VaccinationComponent },
-  { path: 'administrateurs/:id', component: SingleAdminComponent }
+  { path: 'administrateurs/:id', component: SingleAdminComponent },
+  { path: 'vaccinations/:id', component: SingleVaccinationComponent }
 
 ];
 

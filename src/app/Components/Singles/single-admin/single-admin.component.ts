@@ -17,6 +17,7 @@ export class SingleAdminComponent implements OnInit {
   adminCentre: AdministrateurCentre = new AdministrateurCentre();
   utilisateur!: Utilisateur;
   nomCentre: string = '';
+  afficherOptions!: boolean;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -28,19 +29,14 @@ export class SingleAdminComponent implements OnInit {
       const idParam = params.get('id');
       if (idParam !== null) {
         this.adminCentreId = +idParam;
-        this.loadAdminDetails();
+        this.adminservice.getAdministrateurCentreById(this.adminCentreId).subscribe(adminCentre => {
+          this.adminCentre = adminCentre;
+          this.nomCentre = adminCentre.centre.nom; 
+          this.afficherOptions = this.utilisateur.getRole() == RoleUtilisateur.superAdmin ? true: false;
+        });
       }
     });
     this.utilisateur = this.utilisateurService.getUtilisateur();
-  }
-  
-  loadAdminDetails(): void {
-    // if (this.utilisateur.getRole() == RoleUtilisateur.superAdmin) {
-      this.adminservice.getAdministrateurCentreById(this.adminCentreId).subscribe(adminCentre => {
-        this.adminCentre = adminCentre;
-        this.nomCentre = adminCentre.centre.nom; 
-      });
-    //}
   }
 
   isAdminCentre(): boolean {

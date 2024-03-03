@@ -1,31 +1,37 @@
 <app-menu></app-menu>
-<div class="single-patient-container">
+<div class="single-vaccination-container">
     <h2>Détails de la vaccination</h2>
-    <div class="patient-card">
-        <div class="patient-info">
-            <div class="info-label">Patient :</div>
-            <div class="info-value">{{ patient.prenom }} {{patient.nom}}</div>
+    <div class="vaccination-card">
+        <div class="vaccination-info" *ngIf="vaccination.patient">
+            <div class="info-label">Patient:</div>
+            <div class="info-value">{{ getPatientToString() }}</div>
         </div>
-        <div class="patient-info">
-            <div class="info-label">Médécin :</div>
-            <div class="info-value">{{ medecin.prenom }} {{medecin.nom}}</div>
+        <div class="vaccination-info" *ngIf="vaccination.medecin">
+            <div class="info-label">Medecin:</div>
+            <div class="info-value">{{ getMedecinToString() }}</div>
         </div>
-        <div class="patient-info">
-            <div class="info-label">Email:</div>
-            <div class="info-value">{{ vaccination.centre }}</div>
+        <div class="vaccination-info" *ngIf="vaccination.centre">
+            <div class="info-label">Centre:</div>
+            <div class="info-value">{{ getCentreToString() }}</div>
         </div>
-        <div class="patient-info">
-            <div class="info-label">Date de réservation :</div>
+        <div class="vaccination-info" *ngIf="vaccination.dateReservation">
+            <div class="info-label">Date de réservation:</div>
             <div class="info-value">{{ vaccination.dateReservation | date:'short' }}</div>
         </div>
-        <div class="patient-info">
-            <div class="info-label">Date de réservation :</div>
+        <div class="vaccination-info" *ngIf="vaccination.dateVaccination">
+            <div class="info-label">Date de vaccination:</div>
             <div class="info-value">{{ vaccination.dateVaccination | date:'short' }}</div>
         </div>
-        <div class="patient-info">
-            <div class="info-label">Statut :</div>
+        <div class="vaccination-info">
+            <div class="info-label">Statut du dossier:</div>
             <div class="info-value">{{ vaccination.statutDossierPatient }}</div>
         </div>
+    </div>
+
+    <div class="vaccination-operations">
+        <button *ngIf="afficherBoutonValider" (click)="validerVaccination()">Valider la vaccination</button>
+        <button *ngIf="afficherBoutonSupprimer" (click)="supprimerVaccination()">Supprimer la vaccination</button>
+        <button (click)="goBack()">Retour</button>
     </div>
 </div>
   

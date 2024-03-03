@@ -13,10 +13,10 @@
     </div>
   
     <div class="centre-operations">
-        <button *ngIf="isPatient()" (click)="reserverVaccination()">Réserver une vaccination</button>
-        <button *ngIf="isAdminOfThisCenterORSuperAdmin()" (click)="modifierCentre()">Modifier le Centre</button>
-        <button *ngIf="isAdminOfThisCenterORSuperAdmin()" (click)="supprimerCentre()">Supprimer le Centre</button>
+        <button *ngIf="afficherOptionReserver" (click)="reserverVaccination()">Réserver une vaccination</button>
+        <button *ngIf="afficherModifierEtSupprimer" (click)="modifierCentre()">Modifier le Centre</button>
+        <button *ngIf="afficherModifierEtSupprimer" (click)="supprimerCentre()">Supprimer le Centre</button>
       <button (click)="goBack()">Retour</button>
     </div>
-  </div>
+</div>
   
