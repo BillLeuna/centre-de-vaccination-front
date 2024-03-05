@@ -40,4 +40,16 @@ export class VaccinationService {
   getVaccinationByPatientId(patientId: number): Observable<Vaccination> {
     return this.http.get<Vaccination>(`${this.apiUrl}/vaccinations?patientId=${patientId}`);
   }
+
+  getVaccinationByMedecinId(medecinId: number): Observable<Vaccination[]> {
+    return this.http.get<Vaccination[]>(`${this.apiUrl}/vaccinations?medecinId=${medecinId}`);
+  }
+
+  getAllVaccinationsByMedecinEmail(email: string): Observable<Vaccination[]> {
+    return this.http.get<Vaccination[]>(`${this.apiUrl}/vaccinations?medecinEmail=${email}`);
+  }
+
+  getVaccinationByPatientEmail(email: string): Observable<Vaccination> {
+    return this.http.get<Vaccination>(`${this.apiUrl}/vaccinations?patientEmail=${email}`);
+  }
 }

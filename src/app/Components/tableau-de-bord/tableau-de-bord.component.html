@@ -19,16 +19,68 @@
 
 <!-- AdminCentre View -->
 <div *ngIf="isAdminCentre()">
-    <a routerLink="/centres" class="button">Gestion des centres</a>
+    <a routerLink="/centres" class="button">Gestion de centres</a>
     <a routerLink="/medecins" class="button">Gestion des médécins</a>
     <a routerLink="/patients" class="button">Gestion des patients</a>
-</div> 
+</div>
 
 <!-- Medecin View -->
 <div *ngIf="isMedecin()">
+    <div *ngFor="let vaccin of mesVaccinations">
+        <h2>Détails de la vaccination</h2>
+        <div class="patient-card">
+            <div class="patient-info">
+                <div class="info-label">Patient :</div>
+                <div class="info-value">{{ vaccin.patient.prenom }} {{vaccin.patient.nom}}</div>
+            </div>
+            <div class="patient-info">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ vaccin.centre }}</div>
+            </div>
+            <div class="patient-info">
+                <div class="info-label">Date de réservation :</div>
+                <div class="info-value">{{ vaccin.dateReservation | date:'short' }}</div>
+            </div>
+            <div class="patient-info">
+                <div class="info-label">Date de réservation :</div>
+                <div class="info-value">{{ vaccin.dateVaccination | date:'short' }}</div>
+            </div>
+            <div class="patient-info">
+                <div class="info-label">Statut :</div>
+                <div class="info-value">{{ vaccin.statutDossierPatient }}</div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Medecin View -->
 <div *ngIf="isPatient()">
+    <h2>Détails de la vaccination</h2>
+    <div class="patient-card">
+        <div class="patient-info">
+            <div class="info-label">Patient :</div>
+            <div class="info-value">{{ maVaccination.patient.prenom }} {{ maVaccination.patient.nom}}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Médécin :</div>
+            <div class="info-value">{{ maVaccination.medecin.prenom }} {{ maVaccination.medecin.nom}}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Centre:</div>
+            <div class="info-value">{{ maVaccination.centre }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Date de réservation :</div>
+            <div class="info-value">{{ maVaccination.dateReservation | date:'short' }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Date de réservation :</div>
+            <div class="info-value">{{ maVaccination.dateVaccination | date:'short' }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Statut :</div>
+            <div class="info-value">{{ maVaccination.statutDossierPatient }}</div>
+        </div>
+    </div>
 </div>
   
