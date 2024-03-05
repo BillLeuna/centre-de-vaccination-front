@@ -26,22 +26,18 @@ export class UpdateCentreComponent {
     this.centre = new Centre();
   }
 
-  updateCentre(): void {    
-    this.adresseService.createAdresse(this.adresse).subscribe(adresse => {
-      console.log(adresse);
-      this.centre.adresse = adresse;
-      this.centreService.updateCentre(this.centre).subscribe(
-        (centre: Centre) => {
-          console.log('Centre ajouté avec succès :', centre);
-          
-          this.resetForm();
-        },
-        (error) => {
-          console.error('Erreur lors de l\'ajout du centre :', error);
-        }
-      );
-    });
-    
+  updateCentre(): void {
+    this.centre.adresse = this.adresse;    
+    this.centreService.updateCentre(this.centre).subscribe(
+      (centre: Centre) => {
+        console.log('Centre modifié avec succès :', centre);
+        
+        this.resetForm();
+      },
+      (error) => {
+        console.error('Erreur lors de la modification du centre :', error);
+      }
+    );
     this.router.navigate(['centres']);
   }
 
