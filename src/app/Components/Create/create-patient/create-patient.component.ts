@@ -44,12 +44,12 @@ export class CreatePatientComponent implements OnInit{
         this.patientService.addPatient(this.patient).subscribe(
         (patient: Patient) => {
           console.log('Patient ajouté avec succès :', patient);
-          this.resetForm();
           if (this.utilisateur.getRole() != RoleUtilisateur.adminCentre) {
             this.utilisateurService.getUtilisateur().setNom(patient.prenom);
             this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
             this.utilisateurService.getUtilisateur().setEmail(patient.email);
           }
+          this.resetForm();
         },
         (error) => {
           console.error('Erreur lors de l\'ajout du patient :', error);

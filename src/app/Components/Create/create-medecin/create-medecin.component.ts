@@ -30,6 +30,7 @@ export class CreateMedecinComponent implements OnInit {
   ngOnInit(): void {
     this.utilisateur = this.utilisateurService.getUtilisateur();
     this.getCentres();
+    this.medecin.email = this.isNotAdminCentre() ? this.utilisateur.getEmail() : '';
   }
 
   getCentres(): void {
@@ -76,4 +77,8 @@ export class CreateMedecinComponent implements OnInit {
     return centre.adresse.zipCode.toString() + ' ' + centre.adresse.rue + ' ' + centre.adresse.ville;
   }
 
+  isNotAdminCentre() : boolean {
+    return this.utilisateur.getRole() === RoleUtilisateur.adminCentre? false : true;
+  }
+  
 }
