@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Centre } from 'src/app/Models/Centre';
-import { Patient } from 'src/app/Models/Patient';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { StatutDossierPatient } from 'src/app/Models/StatutDossierPatient';
 import { Utilisateur } from 'src/app/Models/Utilisateur';
@@ -130,7 +129,7 @@ export class SingleCentreComponent implements OnInit{
   }
 
   modifierCentre(): void {
-
+    this.router.navigate(['update-centre'], this.centreId)
   }
  
   
