@@ -18,6 +18,9 @@ import { CreateCentreComponent } from './Components/Create/create-centre/create-
 import { VaccinationComponent } from './Components/vaccination/vaccination.component';
 import { SingleAdminComponent } from './Components/Singles/single-admin/single-admin.component';
 import { SingleVaccinationComponent } from './Components/Singles/single-vaccination/single-vaccination.component';
+import { UpdateAdminCentreComponent } from './Components/Updates/update-admin-centre/update-admin-centre.component';
+import { UpdateCentreComponent } from './Components/Updates/update-centre/update-centre.component';
+import { UpdateMedecinComponent } from './Components/Updates/update-medecin/update-medecin.component';
 
 const routes: Routes = [
   { path: '', component: AuthentificationComponent },
@@ -40,7 +43,10 @@ const routes: Routes = [
   { path: 'create-super-admin', component: CreateSuperAdminComponent },
   { path: 'vaccinations', component: VaccinationComponent },
   { path: 'administrateurs/:id', component: SingleAdminComponent },
-  { path: 'vaccinations/:id', component: SingleVaccinationComponent }
+  { path: 'vaccinations/:id', component: SingleVaccinationComponent },
+  { path: 'update-admin-centre', component: UpdateAdminCentreComponent },
+  { path: 'update-centre', component: UpdateCentreComponent },
+  { path: 'update-medecin', component: UpdateMedecinComponent }
 
 ];
 

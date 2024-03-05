@@ -33,6 +33,9 @@ import { AdministrateursComponent } from './Components/administrateurs/administr
 import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
 import { SingleVaccinationComponent } from './Components/Singles/single-vaccination/single-vaccination.component';
 import { SingleAdminComponent } from './Components/Singles/single-admin/single-admin.component';
+import { UpdateAdminCentreComponent } from './Components/Updates/update-admin-centre/update-admin-centre.component';
+import { UpdateCentreComponent } from './Components/Updates/update-centre/update-centre.component';
+import { UpdateMedecinComponent } from './Components/Updates/update-medecin/update-medecin.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { SingleAdminComponent } from './Components/Singles/single-admin/single-a
     CreateCentreComponent,
     SingleVaccinationComponent,
     SingleAdminComponent,
+    UpdateAdminCentreComponent,
+    UpdateCentreComponent,
+    UpdateMedecinComponent,
   ],
   imports: [
     BrowserModule,

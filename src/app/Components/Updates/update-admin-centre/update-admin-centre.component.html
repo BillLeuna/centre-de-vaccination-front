@@ -1,7 +1,7 @@
 <app-menu></app-menu>
-<div class="create-container">
-    <h2>AdminCentre - Créer un compte</h2>
-    <form (ngSubmit)="saveAdminCentre()">
+<div class="update-container">
+    <h2>AdminCentre - Modifier un compte</h2>
+    <form (ngSubmit)="updateAdminCentre()">
         <div class="form-group">
             <label for="prenom">Prénom :</label>
             <input type="prenom" id="prenom" [(ngModel)]="admin.prenom" name="prenom" placeholder="Saisissez son prénom" required>
@@ -17,8 +17,9 @@
         <div class="form-group">
             <label for="centre">Centre de vaccination :</label>
             <select id="centre" [(ngModel)]="admin.centre" name="centre" required>
-                <option *ngFor="let centre of centres" [ngValue]="centre"
-                        placeholder="Choisissez son centre"> {{ centre.nom }} -- {{ centretoString(centre) }} </option>
+                <option *ngFor="let centre of centres" [ngValue]="centre" placeholder="Choisissez son centre"> 
+                    {{ centre.nom }} -- {{ centretoString(centre) }} 
+                </option>
             </select>
         </div>
         <button type="submit">Enregistrer</button>

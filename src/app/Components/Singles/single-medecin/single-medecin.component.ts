@@ -20,6 +20,7 @@ export class SingleMedecinComponent implements OnInit{
   utilisateur!: Utilisateur;
   medecin: Medecin = new Medecin();
   afficherBoutonSupprimer!: boolean;
+  afficherBoutonModifier!: boolean;
 
   constructor(private route: ActivatedRoute,
               private medecinService: MedecinService,
@@ -37,6 +38,7 @@ export class SingleMedecinComponent implements OnInit{
           this.medecin = medecin;
           this.isAdminOfThisCentre().subscribe(result => {
             this.afficherBoutonSupprimer = result;
+            this.afficherBoutonModifier = result;
             console.log('isAdminOfThisCentre result:', result);
           });
         });
@@ -71,6 +73,19 @@ export class SingleMedecinComponent implements OnInit{
         }
       });
     }
+  }
+
+  updateMedecin(): void {
+    this.medecinService.deleteMedecin(this.medecin.id).subscribe({
+      next: () => {
+        console.log('Médecin supprimé');          
+        this.goBack();
+      },
+      error: (error) => {
+        console.error('Une erreur s\'est produite lors de la suppression du médecin : ', error);
+      }
+    });
+    this.router.navigate(['update-medecin']);
   }
 
   goBack(): void {

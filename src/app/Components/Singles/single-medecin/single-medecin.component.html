@@ -22,6 +22,7 @@
   
     <div class="medecin-operations">
       <button *ngIf="afficherBoutonSupprimer" (click)="supprimerMedecin()">Supprimer le Medecin</button>
+      <button *ngIf="afficherBoutonModifier" (click)="updateMedecin()">Modifier le Medecin</button>
       <button (click)="goBack()">Retour</button>
     </div>
   </div>

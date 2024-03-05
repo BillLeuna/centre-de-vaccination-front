@@ -1,0 +1,29 @@
+<div class="create-container">
+    <H2>Médécin - Créer un compte</H2>
+    <form (ngSubmit)="updateMedecin()">
+        <div class="form-group">
+            <label for="prenom">Prénom :</label>
+            <input type="prenom" id="prenom" [(ngModel)]="medecin.prenom" name="prenom" placeholder="Saisissez votre prénom" required>
+        </div>
+        <div class="form-group">
+            <label for="nom">Nom :</label>
+            <input type="nom" id="nom" [(ngModel)]="medecin.nom" name="nom" placeholder="Saisissez votre nom" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email :</label>
+            <input type="email" id="email" [(ngModel)]="medecin.email" name="email" placeholder="Saisissez votre email" required>
+        </div>
+        <div class="form-group">
+            <label for="tel">Téléphone :</label>
+            <input type="tel" id="tel" [(ngModel)]="medecin.telephone" name="tel" placeholder="Saisissez votre numéro de téléphone" required>
+        </div>
+        <div class="form-group">
+            <label for="centre">Centre hospitalier :</label>
+            <select id="centre" [(ngModel)]="medecin.centre" name="centre" required>
+                <option *ngFor="let centre of centres" [ngValue]="centre" placeholder="Choisissez votre centre"> {{ centre.nom }} -- {{ centretoString(centre) }} </option>
+            </select>
+        </div>
+        <button type="submit">Enregistrer</button>
+    </form>
+
+</div>

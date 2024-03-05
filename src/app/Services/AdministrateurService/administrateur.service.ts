@@ -37,6 +37,10 @@ export class AdministrateurService {
     return this.http.delete<void>(`${this.apiUrl}${this.administrateurCentre}/delete/${adminId}`);
   }
 
+  updateAdminCentre(admin: AdministrateurCentre): Observable<AdministrateurCentre> {
+    return this.http.put<AdministrateurCentre>(`${this.apiUrl}${this.administrateurCentre}/update`, admin);
+  }
+
   // Super Admins
   getSuperAdmins(): Observable<SuperAdmin[]> {
     return this.http.get<SuperAdmin[]>(`${this.apiUrl}${this.superAdminUrl}/get`);
