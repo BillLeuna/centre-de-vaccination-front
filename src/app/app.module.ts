@@ -32,6 +32,7 @@ import { CreateSuperAdminComponent } from './Components/Create/create-super-admi
 import { AdministrateursComponent } from './Components/administrateurs/administrateurs.component';
 import { CreateCentreComponent } from './Components/Create/create-centre/create-centre.component';
 import { SingleVaccinationComponent } from './Components/Singles/single-vaccination/single-vaccination.component';
+import { SingleAdminComponent } from './Components/Singles/single-admin/single-admin.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { SingleVaccinationComponent } from './Components/Singles/single-vaccinat
     AdministrateursComponent,
     CreateCentreComponent,
     SingleVaccinationComponent,
+    SingleAdminComponent,
   ],
   imports: [
     BrowserModule,

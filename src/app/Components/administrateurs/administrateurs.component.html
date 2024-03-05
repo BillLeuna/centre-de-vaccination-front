@@ -9,7 +9,7 @@
         <div *ngIf="allAdminCentre">
             <h2>Adminitrateurs de centre</h2>
             <div class="admin-container">
-                <div *ngFor="let adminCentre of filtredAdminCentre" class="admin-card">
+                <div *ngFor="let adminCentre of filtredAdminCentre" class="admin-card" (click)="goToSingleAdmin(adminCentre.id)">
                     <div class="admin-info">
                         <div class="info-label">Nom :</div>
                         <div class="info-value">{{ adminCentre.nom }}</div>
@@ -25,7 +25,6 @@
                     <div class="admin-info">
                         <div class="info-label">Centre :</div>
                         <div class="info-value">{{ adminCentre.centre.nom }}</div>
-                        <button mat-raised-button color="warn" (click)="deleteAdmininistrateurCentre(adminCentre.id)">Supprimer</button>
                     </div>
                 </div>
             </div>
@@ -50,7 +49,6 @@
                         <div class="info-label">Centre :</div>
                         <div class="info-value">{{ superAdmin.centre.nom }}</div>
                     </div>
-                    <button mat-raised-button color="warn" (click)="deleteAdmininistrateurCentre(superAdmin.id)">Supprimer</button>
                 </div>
             </div>
         </div>

@@ -1,0 +1,29 @@
+<app-menu></app-menu>
+<div class="single-admin-container">
+    <h2>Détails de l'admin de centre</h2>
+    <div class="admin-card">
+        <div class="admin-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ adminCentre.nom }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Prenom:</div>
+            <div class="info-value">{{ adminCentre.prenom }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Centre:</div>
+            <div class="info-value">{{ nomCentre }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ adminCentre.email }}</div>
+        </div>
+    </div>
+  
+    <div class="admin-operations">
+        <button *ngIf="afficherOptions" (click)="modifierAdminCentre()">Modifier l'admin de centre</button>
+        <button *ngIf="afficherOptions" (click)="SupprimerAdminCentre()">Supprimer l'admin de centre</button>
+      <button (click)="goBack()">Retour</button>
+    </div>
+  </div>
+  

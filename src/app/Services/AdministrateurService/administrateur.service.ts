@@ -34,14 +34,7 @@ export class AdministrateurService {
   }
 
   deleteAdminCentre(adminId: number): Observable<void> {
-    const url = `${this.apiUrl}${this.administrateurCentre}/delete/${adminId}`;
-    return this.http.delete<void>(url)
-      .pipe(
-        catchError((error) => {
-          console.error('Une erreur s\'est produite lors de la suppression de l\'administrateur de centre:', error);
-          throw error;
-        })
-      );
+    return this.http.delete<void>(`${this.apiUrl}${this.administrateurCentre}/delete/${adminId}`);
   }
 
   // Super Admins

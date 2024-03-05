@@ -12,7 +12,7 @@ export class MenuComponent {
     { label: 'Médecins', route: '/medecins' },
     { label: 'Centres de vaccination', route: '/centres' },
     { label: 'Vaccinations', route: '/vaccinations' },
-    { label: 'Administrateurs', route: '/administrateurs' },
+    { label: 'Administrateurs de centre', route: '/administrateurs' },
     { label: 'Tableau de bord', route: '/tableau-de-bord' },
     { label: 'Mon Compte', route: '/mon-compte' }
   ];

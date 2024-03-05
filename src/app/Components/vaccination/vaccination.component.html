@@ -1,2 +1,37 @@
 <app-menu></app-menu>
-<p>vaccination works!</p>
+<div *ngIf="vaccinations">
+<div>
+    <h2>Liste des Vaccinations</h2>
+    <div class="vaccination-container">
+      <div *ngFor="let vaccination of vaccinations" class="vaccination-card" (click)="goToSingleVaccination(vaccination.id)">
+        <div class="vaccination-info" *ngIf="vaccination.patient">
+            <div class="info-label">Patient:</div>
+            <div class="info-value">{{ getPatientToString(vaccination) }}</div>
+        </div>
+        <div class="vaccination-info" *ngIf="vaccination.medecin">
+            <div class="info-label">Medecin:</div>
+            <div class="info-value">{{ getMedecinToString(vaccination) }}</div>
+        </div>
+        <div class="vaccination-info" *ngIf="vaccination.centre">
+            <div class="info-label">Centre:</div>
+            <div class="info-value">{{ getCentreToString(vaccination) }}</div>
+        </div>
+        <div class="vaccination-info" *ngIf="vaccination.dateReservation">
+            <div class="info-label">Date de réservation:</div>
+            <div class="info-value">{{ vaccination.dateReservation | date:'short' }}</div>
+        </div>
+        <div class="vaccination-info" *ngIf="vaccination.dateVaccination">
+            <div class="info-label">Date de vaccination:</div>
+            <div class="info-value">{{ vaccination.dateVaccination | date:'short' }}</div>
+        </div>
+        <div class="vaccination-info">
+            <div class="info-label">Statut du dossier:</div>
+            <div class="info-value">{{ vaccination.statutDossierPatient }}</div>
+        </div>
+        <div class="centre-info"></div>
+      </div>
+    </div>
+</div>
+  
+  
+
