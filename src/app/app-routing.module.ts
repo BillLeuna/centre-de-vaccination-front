@@ -47,7 +47,6 @@ const routes: Routes = [
   { path: 'update-admin-centre', component: UpdateAdminCentreComponent },
   { path: 'update-centre', component: UpdateCentreComponent },
   { path: 'update-medecin', component: UpdateMedecinComponent }
-
 ];
 
 @NgModule({

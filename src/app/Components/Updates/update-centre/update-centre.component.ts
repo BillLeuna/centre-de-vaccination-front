@@ -7,6 +7,7 @@ import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { AdministrateurService } from 'src/app/Services/AdministrateurService/administrateur.service';
 import { AdresseService } from 'src/app/Services/AdresseService/adresse.service';
 import { CentreService } from 'src/app/Services/CentreService/centre.service';
+import { ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-update-centre',
@@ -33,7 +34,7 @@ export class UpdateCentreComponent {
   ) { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
+    this.route.paramMap.subscribe((params : ParamMap) => {
       const idParam = params.get('id');
       if (idParam !== null) {
         this.centreId = +idParam;
@@ -71,8 +72,6 @@ export class UpdateCentreComponent {
     this.adresse = new Adresse();
     this.centre = new Centre();
   }
-
-  
 
   updateCentre(): void {
     this.centre.adresse = this.adresse;    

@@ -1,2 +1,70 @@
 <app-menu></app-menu>
-<p>mon-compte works!</p>
+<div class="button-wrap" *ngIf="isSuperAdmin()">
+    <div class="admin-card">
+        <div class="admin-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ adminCentre.nom }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Prenom:</div>
+            <div class="info-value">{{ adminCentre.prenom }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Centre:</div>
+            <div class="info-value">{{ adminCentre.centre.nom }}</div>
+        </div>
+        <div class="admin-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ adminCentre.email }}</div>
+        </div>
+    </div>
+</div>
+
+
+<div class="button-wrap" *ngIf="isMedecin()">
+    <h2>Données personnelles</h2>
+    <div class="medecin-card">
+        <div class="medecin-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ medecin.nom }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Prénom:</div>
+            <div class="info-value">{{ medecin.prenom }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ medecin.email }}</div>
+        </div>
+        <div class="medecin-info">
+            <div class="info-label">Téléphone:</div>
+            <div class="info-value">{{ medecin.telephone }}</div>
+        </div>
+    </div>
+</div>
+
+<div class="button-wrap" *ngIf="isPatient()">
+    <h2>Données personnelles </h2>
+    <div class="patient-card">
+        <div class="patient-info">
+            <div class="info-label">Nom:</div>
+            <div class="info-value">{{ patient.nom }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Prénom:</div>
+            <div class="info-value">{{ patient.prenom }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Email:</div>
+            <div class="info-value">{{ patient.email }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Date d'Inscription:</div>
+            <div class="info-value">{{ patient.dateDInscription | date:'short' }}</div>
+        </div>
+        <div class="patient-info">
+            <div class="info-label">Téléphone:</div>
+            <div class="info-value">{{ patient.telephone }}</div>
+        </div>
+    </div>
+</div>

@@ -129,7 +129,7 @@ export class SingleCentreComponent implements OnInit{
   }
 
   modifierCentre(): void {
-    this.router.navigate(['update-centre'], this.centreId)
+    this.router.navigate(['update-centre', this.centreId]);
   }
  
   
