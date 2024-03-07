@@ -58,6 +58,7 @@ export class CreateMedecinComponent implements OnInit {
     this.medecinService.addMedecin(this.medecin).subscribe(
       (medecin: Medecin) => {
         console.log('Medecin ajouté avec succès :', medecin);
+        alert('Medecin ajouté avec succès');
         this.resetForm();
         if (this.utilisateur.getRole() != RoleUtilisateur.adminCentre) {
           this.utilisateurService.getUtilisateur().setNom(medecin.prenom);
@@ -66,10 +67,10 @@ export class CreateMedecinComponent implements OnInit {
         }
       },
       (error) => {
+        alert('Erreur lors de l\'ajout du medecin');
         console.error('Erreur lors de l\'ajout du medecin :', error);
       }
     );
-
     this.router.navigate(['tableau-de-bord']);
   }
 

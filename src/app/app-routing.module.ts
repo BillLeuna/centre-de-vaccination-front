@@ -44,9 +44,9 @@ const routes: Routes = [
   { path: 'vaccinations', component: VaccinationComponent },
   { path: 'administrateurs/:id', component: SingleAdminComponent },
   { path: 'vaccinations/:id', component: SingleVaccinationComponent },
-  { path: 'update-admin-centre', component: UpdateAdminCentreComponent },
-  { path: 'update-centre', component: UpdateCentreComponent },
-  { path: 'update-medecin', component: UpdateMedecinComponent }
+  { path: 'update-admin-centre/:id', component: UpdateAdminCentreComponent },
+  { path: 'update-centre/:id', component: UpdateCentreComponent },
+  { path: 'update-medecin/:id', component: UpdateMedecinComponent }
 ];
 
 @NgModule({

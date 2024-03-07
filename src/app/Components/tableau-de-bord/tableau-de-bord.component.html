@@ -4,15 +4,27 @@
     <p>Bienvenue, {{ utilisateur.getNom() }}!</p>
 </div>
 
-<div class="button-wrap">
+<div *ngIf="isPatient()" class="button-wrap">
+    <a routerLink="/vaccinations" *ngIf="isAdminCentre() || isMedecin() || isPatient()" class="button">Gestion des vaccinations</a>
+</div>
+
+<div *ngIf="isMedecin()" class="button-wrap">
+    <a routerLink="/patients" *ngIf="isMedecin()" class="button">Consulter la liste des patients</a>
+    <a routerLink="/vaccinations" *ngIf="isAdminCentre() || isMedecin() || isPatient()" class="button">Gestion des vaccinations</a>
+</div>
+
+<div *ngIf="isAdminCentre()" class="button-wrap">
     <a routerLink="/centres" *ngIf="isSuperAdmin() || isAdminCentre()" class="button">Gestion des centres</a>
     <a routerLink="/medecins" *ngIf="isAdminCentre()" class="button">Gestion des médécins</a>
-    <a routerLink="/patients" *ngIf="isMedecin()" class="button">Consulter la liste des patients</a>
+    <a routerLink="/create-medecin" *ngIf="isAdminCentre()" class="button">Créer un médécin</a>
+    <a routerLink="/create-patient" *ngIf="isAdminCentre()" class="button">Créer un patient</a>
+    <a routerLink="/vaccinations" *ngIf="isAdminCentre() || isMedecin() || isPatient()" class="button">Gestion des vaccinations</a>
+</div>
+
+<div *ngIf="isSuperAdmin()" class="button-wrap">
+    <a routerLink="/centres" *ngIf="isSuperAdmin() || isAdminCentre()" class="button">Gestion des centres</a>
     <a routerLink="/administrateurs" *ngIf="isSuperAdmin()" class="button">Gestion des administrateurs</a>
     <a routerLink="/create-admin-centre" *ngIf="isSuperAdmin()" class="button">Créer un admin de centre</a>
     <a routerLink="/create-super-admin" *ngIf="isSuperAdmin()" class="button">Créer un surper-admin</a>
-    <a routerLink="/create-medecin" *ngIf="isAdminCentre()" class="button">Créer un médécin</a>
     <a routerLink="/create-centre" *ngIf="isSuperAdmin()" class="button">Créer un centre</a>
-    <a routerLink="/create-patient" *ngIf="isAdminCentre()" class="button">Créer un patient</a>
-    <a routerLink="/vaccinations" *ngIf="isAdminCentre() || isMedecin() || isPatient()" class="button">Gestion des vaccinations</a>
 </div>

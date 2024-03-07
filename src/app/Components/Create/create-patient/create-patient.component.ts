@@ -44,6 +44,7 @@ export class CreatePatientComponent implements OnInit{
         this.patientService.addPatient(this.patient).subscribe(
         (patient: Patient) => {
           console.log('Patient ajouté avec succès :', patient);
+          alert('Patient ajouté avec succès');
           if (this.utilisateur.getRole() != RoleUtilisateur.adminCentre) {
             this.utilisateurService.getUtilisateur().setNom(patient.prenom);
             this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.patient);
@@ -53,6 +54,7 @@ export class CreatePatientComponent implements OnInit{
         },
         (error) => {
           console.error('Erreur lors de l\'ajout du patient :', error);
+          alert('Erreur lors de l\'ajout du patient');
         }
       );
       this.router.navigate(['centres']);

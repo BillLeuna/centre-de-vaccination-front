@@ -65,11 +65,13 @@ export class SingleMedecinComponent implements OnInit{
     if (confirmation) {
       this.medecinService.deleteMedecin(this.medecin.id).subscribe({
         next: () => {
-          console.log('Médecin supprimé');          
+          console.log('Médecin supprimé');   
+          alert('Médecin supprimé');       
           this.goBack();
         },
         error: (error) => {
           console.error('Une erreur s\'est produite lors de la suppression du médecin : ', error);
+          alert('Une erreur s\'est produite lors de la suppression du médecin');
         }
       });
     }

@@ -48,6 +48,7 @@ export class UpdateCentreComponent {
         });
       }
     });
+    
     this.utilisateur = this.utilisateurService.getUtilisateur();    
   }
   isPatientAndHasNoReservation() {

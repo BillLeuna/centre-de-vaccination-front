@@ -63,12 +63,13 @@ export class SingleAdminComponent implements OnInit {
       this.adminservice.deleteAdminCentre(this.adminCentre.id).subscribe({
         next: () => {
           console.log('Suppression effectuée');
+          alert('Suppression effectuée');
           this.goBack();
         },
         error: (error) => {
           console.error('Une erreur s\'est produite lors de la suppression de l\'admin :', error);
+          alert('Une erreur s\'est produite lors de la suppression de l\'admin');
         }
-        
       });
     }
   }

@@ -33,6 +33,7 @@ export class CreateSuperAdminComponent implements OnInit {
     this.administrateurService.addSuperAdmin(this.superAdmin).subscribe(
       (admin: SuperAdmin) => {
         console.log('SuperAdmin ajouté avec succès :', admin);
+        alert('SuperAdmin ajouté avec succès');
         this.utilisateurService.getUtilisateur().setNom(admin.prenom);
         this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.superAdmin);
         this.utilisateurService.getUtilisateur().setEmail(admin.email);
@@ -40,6 +41,7 @@ export class CreateSuperAdminComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors de l\'ajout du superAdmin :', error);
+        alert('Erreur lors de l\'ajout du superAdmin');
       }
     );
     this.router.navigate(['tableau-de-bord']);

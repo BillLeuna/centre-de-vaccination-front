@@ -33,16 +33,17 @@ export class CreateCentreComponent {
       this.centreService.addCentre(this.centre).subscribe(
         (centre: Centre) => {
           console.log('Centre ajouté avec succès :', centre);
-          
+          alert('Centre ajouté avec succès');
           this.resetForm();
         },
         (error) => {
+          alert('Erreur lors de l\'ajout du centre');
           console.error('Erreur lors de l\'ajout du centre :', error);
         }
       );
     });
     
-    this.router.navigate(['centres']);
+    this.router.navigate(['tableau-de-bord']);
   }
 
 }

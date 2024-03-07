@@ -112,11 +112,13 @@ export class SingleVaccinationComponent {
       console.log(medecin);
       this.vaccinationService.updateVaccination(this.vaccination).subscribe({
         next: () => {
-          console.log('Vaccination validée avec succès');          
+          console.log('Vaccination validée avec succès');  
+          alert('Vaccination validée avec succès');        
           this.goBack();
         },
         error: (error) => {
           console.error('Une erreur s\'est produite lors de la validation de la vaccination : ', error);
+          alert('Une erreur s\'est produite lors de la validation de la vaccination');
         }
       });
     });
@@ -127,11 +129,13 @@ export class SingleVaccinationComponent {
     if (confirmation) {
       this.vaccinationService.deleteVaccination(this.vaccination.id).subscribe({
         next: () => {
-          console.log('Validation supprimée');          
+          console.log('Validation supprimée');  
+          alert('Validation supprimée');        
           this.goBack();
         },
         error: (error) => {
           console.error('Une erreur s\'est produite lors de la suppression de la vaccination : ', error);
+          alert('Une erreur s\'est produite lors de la suppression de la vaccination');
         }
       });
     }

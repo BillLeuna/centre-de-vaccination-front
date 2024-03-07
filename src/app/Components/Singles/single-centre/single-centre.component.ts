@@ -119,10 +119,12 @@ export class SingleCentreComponent implements OnInit{
       this.centreService.deleteCentre(this.centre.id).subscribe({
         next: () => {
           console.log('Le centre a été supprimé avec succès.');
+          alert('Le centre a été supprimé avec succès');
           this.goBack();
         },
         error: (error) => {
           console.error('Une erreur s\'est produite lors de la suppression du centre : ', error);
+          alert('Une erreur s\'est produite lors de la suppression du centre');
         }
       });
     }

@@ -1,70 +1,114 @@
 <app-menu></app-menu>
-<div class="button-wrap" *ngIf="isSuperAdmin()">
-    <div class="admin-card">
-        <div class="admin-info">
-            <div class="info-label">Nom:</div>
-            <div class="info-value">{{ adminCentre.nom }}</div>
+<div class="mon-compte-container" *ngIf="!modifierCompte">
+    <h2>Mon Compte</h2>
+    <div class="button-wrap" *ngIf="isAdminCentre()">
+        <div class="card">
+            <div class="info">
+                <div class="info-label">Nom:</div>
+                <div class="info-value">{{ adminCentre.nom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Prenom:</div>
+                <div class="info-value">{{ adminCentre.prenom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ adminCentre.email }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Centre:</div>
+                <div class="info-value">{{ nomCentre }}</div>
+            </div>
         </div>
-        <div class="admin-info">
-            <div class="info-label">Prenom:</div>
-            <div class="info-value">{{ adminCentre.prenom }}</div>
+    </div>
+
+    <div class="button-wrap" *ngIf="isSuperAdmin()">
+        <div class="card">
+            <div class="info">
+                <div class="info-label">Nom:</div>
+                <div class="info-value">{{ superAdmin.nom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Prenom:</div>
+                <div class="info-value">{{ superAdmin.prenom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ superAdmin.email }}</div>
+            </div>
         </div>
-        <div class="admin-info">
-            <div class="info-label">Centre:</div>
-            <div class="info-value">{{ adminCentre.centre.nom }}</div>
+    </div>
+
+    <div class="button-wrap" *ngIf="isMedecin()">
+        <div class="card">
+            <div class="info">
+                <div class="info-label">Nom:</div>
+                <div class="info-value">{{ medecin.nom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Prénom:</div>
+                <div class="info-value">{{ medecin.prenom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ medecin.email }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Téléphone:</div>
+                <div class="info-value">{{ medecin.telephone }}</div>
+            </div>
         </div>
-        <div class="admin-info">
-            <div class="info-label">Email:</div>
-            <div class="info-value">{{ adminCentre.email }}</div>
+    </div>
+
+    <div class="button-wrap" *ngIf="isPatient()">
+        <div class="card">
+            <div class="info">
+                <div class="info-label">Nom:</div>
+                <div class="info-value">{{ patient.nom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Prénom:</div>
+                <div class="info-value">{{ patient.prenom }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Email:</div>
+                <div class="info-value">{{ patient.email }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Date d'Inscription:</div>
+                <div class="info-value">{{ patient.dateDInscription | date:'dd/MM/yyyy' }}</div>
+            </div>
+            <div class="info">
+                <div class="info-label">Téléphone:</div>
+                <div class="info-value">{{ patient.telephone }}</div>
+            </div>
         </div>
+    </div>
+
+    <div class="operations">
+        <button (click)="modifierMotDePasse()">Modifier mon mot de passe</button>
+        <button (click)="seDeconnecter()">Se déconnecter</button>
     </div>
 </div>
-
-
-<div class="button-wrap" *ngIf="isMedecin()">
-    <h2>Données personnelles</h2>
-    <div class="medecin-card">
-        <div class="medecin-info">
-            <div class="info-label">Nom:</div>
-            <div class="info-value">{{ medecin.nom }}</div>
+<div class="mon-compte-container" *ngIf="modifierCompte">
+    <h2>Changer de mot de passe</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="info">
+            <label for="email" class="info-label">Email :</label>
+            <div class="info-value">{{ authentification.email }}</div>
         </div>
-        <div class="medecin-info">
-            <div class="info-label">Prénom:</div>
-            <div class="info-value">{{ medecin.prenom }}</div>
+        <div class="form-group">
+            <label for="email">Entrez l'ancien mot de passe :</label>
+            <input type="password" id="motDePasse1" [(ngModel)]="ancienMotDePasse" name="ancienMotDePasse" placeholder="Saisissez votre ancien mot de passe" required>
         </div>
-        <div class="medecin-info">
-            <div class="info-label">Email:</div>
-            <div class="info-value">{{ medecin.email }}</div>
+        <div class="form-group">
+            <label for="email">Entrez le nouveau mot de passe :</label>
+            <input type="password" id="motDePasse2" [(ngModel)]="nouveauMotDePasse" name="nouveauMotDePasse" placeholder="Saisissez votre nouveau mot de passe" required>
         </div>
-        <div class="medecin-info">
-            <div class="info-label">Téléphone:</div>
-            <div class="info-value">{{ medecin.telephone }}</div>
+        <div class="form-group">
+            <label for="email">Entrez le à nouveau :</label>
+            <input type="password" id="motDePasse3" [(ngModel)]="confirmationNouveauMotDePasse" name="ConfirmationNouveauMotDePasse" placeholder="Saisissez à nouveau votre nouveau mot de passe" required>
         </div>
-    </div>
-</div>
-
-<div class="button-wrap" *ngIf="isPatient()">
-    <h2>Données personnelles </h2>
-    <div class="patient-card">
-        <div class="patient-info">
-            <div class="info-label">Nom:</div>
-            <div class="info-value">{{ patient.nom }}</div>
-        </div>
-        <div class="patient-info">
-            <div class="info-label">Prénom:</div>
-            <div class="info-value">{{ patient.prenom }}</div>
-        </div>
-        <div class="patient-info">
-            <div class="info-label">Email:</div>
-            <div class="info-value">{{ patient.email }}</div>
-        </div>
-        <div class="patient-info">
-            <div class="info-label">Date d'Inscription:</div>
-            <div class="info-value">{{ patient.dateDInscription | date:'short' }}</div>
-        </div>
-        <div class="patient-info">
-            <div class="info-label">Téléphone:</div>
-            <div class="info-value">{{ patient.telephone }}</div>
-        </div>
-    </div>
+        <button type="submit">Enregistrer</button>
+    </form>
 </div>

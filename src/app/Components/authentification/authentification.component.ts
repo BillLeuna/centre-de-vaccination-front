@@ -48,12 +48,14 @@ export class AuthentificationComponent implements OnInit {
     if (this.submitButtonText === this.se_connecter) {
       this.authentificationService.authenticateUser(this.authentification)
         .subscribe(authentification => {
-          console.log(authentification);
           this.updateUtilisateur();
           this.router.navigate(['tableau-de-bord']);
-      });
-      // this.updateUtilisateur();
-      // this.router.navigate(['tableau-de-bord']);
+      },
+        (error) => {
+          console.error('Une erreur est survenue lors de l\'authentification : ', error);
+          alert('La connexion a échoué. Veuillez vérifier vos identifiants.');
+        }
+      );
     }
     if (this.submitButtonText === this.creer_un_compte) {
       this.authentificationService.createAuthentification(this.authentification)

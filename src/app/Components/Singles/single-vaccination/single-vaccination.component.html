@@ -16,11 +16,11 @@
         </div>
         <div class="vaccination-info" *ngIf="vaccination.dateReservation">
             <div class="info-label">Date de réservation:</div>
-            <div class="info-value">{{ vaccination.dateReservation | date:'short' }}</div>
+            <div class="info-value">{{ vaccination.dateReservation | date:'dd/MM/yyyy' }}</div>
         </div>
         <div class="vaccination-info" *ngIf="vaccination.dateVaccination">
             <div class="info-label">Date de vaccination:</div>
-            <div class="info-value">{{ vaccination.dateVaccination | date:'short' }}</div>
+            <div class="info-value">{{ vaccination.dateVaccination | date:'dd/MM/yyyy' }}</div>
         </div>
         <div class="vaccination-info">
             <div class="info-label">Statut du dossier:</div>

@@ -36,6 +36,7 @@ import { SingleAdminComponent } from './Components/Singles/single-admin/single-a
 import { UpdateAdminCentreComponent } from './Components/Updates/update-admin-centre/update-admin-centre.component';
 import { UpdateCentreComponent } from './Components/Updates/update-centre/update-centre.component';
 import { UpdateMedecinComponent } from './Components/Updates/update-medecin/update-medecin.component';
+import { SingleSuperAdminComponent } from './Components/Singles/single-super-admin/single-super-admin/single-super-admin.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { UpdateMedecinComponent } from './Components/Updates/update-medecin/upda
     UpdateAdminCentreComponent,
     UpdateCentreComponent,
     UpdateMedecinComponent,
+    SingleSuperAdminComponent,
   ],
   imports: [
     BrowserModule,
