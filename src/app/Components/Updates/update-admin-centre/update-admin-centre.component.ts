@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { AdministrateurCentre } from 'src/app/Models/AdministrateurCentre';
 import { Centre } from 'src/app/Models/Centre';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
@@ -16,10 +16,13 @@ import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisat
 })
 export class UpdateAdminCentreComponent {
 
+  adminCentreId!: number;
+  adminCentre!: AdministrateurCentre;
 
   constructor(
     private administrateurService: AdministrateurService,
     private router: Router,
+    private route: ActivatedRoute,
     private centreService: CentreService,
     private utilisateurService: UtilisateurService
   ) { }
@@ -30,6 +33,16 @@ export class UpdateAdminCentreComponent {
 
   ngOnInit(): void {
     this.getCentres();
+    this.route.paramMap.subscribe((params : ParamMap) => {
+      const idParam = params.get('id');
+      if (idParam !== null) {
+        this.adminCentreId = +idParam;
+        this.administrateurService.getAdministrateurCentreById(this.adminCentreId).subscribe(adminCentre => {
+          this.adminCentre = adminCentre;
+        });
+      }
+    });
+
     this.utilisateur = this.utilisateurService.getUtilisateur();
   }
 
@@ -45,10 +58,6 @@ export class UpdateAdminCentreComponent {
   }
 
   updateAdminCentre(): void {
-    this.admin.statut = StatutAdmin.administrateurCentre;
-    this.admin.medecins = this.admin.centre.medecins;
-    console.log(this.admin);
-    
 
     this.administrateurService.updateAdminCentre(this.admin).subscribe(
       (admin: AdministrateurCentre) => {
@@ -57,6 +66,7 @@ export class UpdateAdminCentreComponent {
           this.utilisateurService.getUtilisateur().setNom(admin.prenom);
           this.utilisateurService.getUtilisateur().setRole(RoleUtilisateur.adminCentre);
           this.utilisateurService.getUtilisateur().setEmail(admin.email);
+          
         }
         this.resetForm();
       },

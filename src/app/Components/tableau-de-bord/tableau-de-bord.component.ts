@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { RoleUtilisateur } from 'src/app/Models/RoleUtilisateur';
 import { Utilisateur } from 'src/app/Models/Utilisateur';
 import { Vaccination } from 'src/app/Models/Vaccination';
-import { MedecinService } from 'src/app/Services/MedecinService/medecin.service';
 import { UtilisateurService } from 'src/app/Services/UtilisateurService/utilisateur.service';
 import { VaccinationService } from 'src/app/Services/VaccinationService/vaccination.service';
 

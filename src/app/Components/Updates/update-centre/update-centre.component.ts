@@ -75,14 +75,18 @@ export class UpdateCentreComponent {
   }
 
   updateCentre(): void {
-    this.centre.adresse = this.adresse;    
-    this.centreService.updateCentre(this.centre).subscribe(
-      (centre: Centre) => {
-        console.log('Centre modifié avec succès :', centre);
-        this.resetForm();
-      },
-      (error) => {
-        console.error('Erreur lors de la modification du centre :', error);
+    this.centre.adresse = this.adresse;
+    this.adresseService.updateAdresse(this.adresse).subscribe(
+      (adresse: Adresse) => {
+        this.centreService.updateCentre(this.centre).subscribe(
+          (centre: Centre) => {
+            console.log('Centre modifié avec succès :', centre);
+            this.resetForm();
+          },
+          (error) => {
+            console.error('Erreur lors de la modification du centre :', error);
+          }
+        );
       }
     );
     this.router.navigate(['centres']);

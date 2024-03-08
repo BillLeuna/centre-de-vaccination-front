@@ -54,7 +54,7 @@ export class SingleAdminComponent implements OnInit {
   }
 
   modifierAdminCentre() : void {
-
+    this.router.navigate(['update-admin-centre', this.adminCentreId]);
   }
 
   SupprimerAdminCentre(): void {
